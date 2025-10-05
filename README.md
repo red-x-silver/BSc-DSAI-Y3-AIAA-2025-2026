@@ -1,6 +1,4 @@
-# Welcome!
-
-## Methods 5: Artificial Intelligence and Advanced Analytics 2025-2026
+# Welcome to Methods 5: Artificial Intelligence and Advanced Analytics 2025/2026 🕶️
 
 This is a unit for BSc Data Science and Artificial Intelligence Year 3 at Creative Computing Institute, University of Arts London.
 
