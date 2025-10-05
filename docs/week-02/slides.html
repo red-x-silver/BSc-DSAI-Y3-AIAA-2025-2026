@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-  <title>Data Representation and Visualization 02</title>
+  <title>Artificial Intelligence and Advanced Analytics 02</title>
   <!-- This whole presentation was made with Big: https://github.com/tmcw/big -->
   
   <link href="../big/big.css" rel="stylesheet" type="text/css" />
@@ -29,11 +29,11 @@
 </head>
 <body>
   <div>
-    DRV 
+    AIAA
     <br />
     Lecture 02
     <br />
-    Introduction to data modalities and data representation  
+    Neural networks quick recap + AI in Computer Vision part 1  
   </div>
     
   <div>Welcome 👩‍🎤🧑‍🎤👨‍🎤</div>
@@ -41,198 +41,108 @@
   <div> By the end of this lecture, we'll have learnt about:
   
      <br /> The theoretical: 
-     <br /> - What data is
-     <br />  - What data modalities are
-     <br />  - Data representation at 
+     <br /> - Introduction to the unit
+     <br /> - Quick revision on data modalities
+     <br />  - Quick revision on neural networks
+     <br />  - AI applications in Computer Vision part 01
+     <br />  - - Image classification, Object detection, Image segmentation, Keypoint detection
      <br /> The practical: 
-     <br /> - Explore real-world data
-    <br /> - Explore example data visualization projects
+     <br /> - testing models on hugging face
+    <br /> - testing YOLO11 on your laptop / google colab notebook
   
   </div>
   
-  <div> First of all, don't forget to confirm your attendence on <a href="https://jgl.github.io/DiplomaInAppleDevelopment-AutumnWinter2023/codingOne/lecture_01.html#6"> Seats App!  </a></div>
-  
-  <div> fun (vintage) AI for today: an image-to-image translation model <a href="https://affinelayer.com/pixsrv/">Pix2Pix</a> (with an interactive demo web page) </div>
-  
-  <div> Recap </div>
-  
+  <div> First of all, don't forget to confirm your attendence on <a href="https://www.arts.ac.uk/study-at-ual/course-regulations/attendance-policy/attendance-monitoring"> SEAtS App!  </a></div>
 
+   <div> What is this unit about? </div>
+  
+  <div> AI deployment in professional ecosystems, with a wide range of domains including: </div>
   
   <div> 
-    from <a href="https://moodle.arts.ac.uk/mod/resource/view.php?id=1251944">"Introduction to AI" by Mick Grierson</a>: 
+    - Large language model (week 01)
     <br /> 
-    - We can also view AI as statistical, probabilistic, stochastic and other mathematical processes that can be used to learn procedures and perform tasks automatically.
-    <br />       
-    - Symbolic and Connectionist approaches to AI  
+    - AI in Computer Vision (week 02, 03)
     <br /> 
-    (We'll see more on this in later lectures)
-  </div>
+    - AI in audio and music (week 04, 05)
+    <br /> 
+    - AI in 3D and gaming (week 06, 07)
+    <br /> 
+    -AI in affective computing (week 08)
+    <br /> 
+    - AI in recommender systems (week 09)  
+    <br /> 
+    - Multi-modal AI (week 10)
+    <br /> 
+    - Explanable AI (week 11)
     
-  <div> Representation </div>
-  
-  <div> What is apple </div>
-  
-  <div> Pattern recognition question 01
-  <br /> 
-  How do you distinguish apple as a fruit vs. Apple as a tech company? 
-  </div>
-  
-  <div> 
-    Here are some possible representations:
-  <br /> 
-    - is it edible or not?
-  <br /> 
-    - is it a fruit?
-   <br />
-    - is the word spelled with an upper cased "A"? 🤪    
-  </div>
-  
-  <div> 
-    Pattern recognition question 02
-    <br />    
-    How do you distinguish apple vs. pear?  🍎🍏🍐       
-  </div>
-      
-  <div> 
-    How do you distinguish apple vs. pear?  🍎🍏🍐
-    <br />   
-    Do any of our previous representations work?
-    <br /> 
-    - is it edible or not?
-    <br /> 
-    - is it a fruit?
-    <br />
-    - is the word spelled with an upper cased "A"? 🤪    
-  </div>
-  
-  <div> 
-    No but here are some possible representations:
-    <br /> 
-    - their shapes
-    <br />
-    - their tastes   
-  </div>
-  
-  
-  <div> 
-    Good representation simplifies our task!
-    <br /> 
-    To excel at pattern recognition ~= To find a good representation
-  </div>
-  
-  <div> 
-   🌪️
-   <br /> 
-   <a href="https://www.theguardian.com/lifeandstyle/wordofmouth/2012/may/21/the-papple-tasted-and-tested">Meet papple</a>
-  </div>
-  
-  <div> 
-   Representation can be contextual.
-   <br /> 
-   Depends on the problem context, different tasks may have different efficient representations for the same objects.
-  </div>
-  
-  
-  <div> My take on representation:
-     <br /> 
-    - It can be descriptive and capture some characteristics.
-     <br /> 
-    - It can be perspective and partial. 
-     <br /> 
-    - It can be contextual where "good" ones are task-dependent.
   </div>
 
-  <div> - A side note on abstraction (in the context of computational thinking) -
-   <br /> 
-   Abstraction is related to representation in the sense that    
-   it is about taking away irrelevant details and reducing the representation to essential characteristics.
-   <br /> 
-   (Shoutout to  <a href="https://jgl.github.io/DiplomaInAppleDevelopment-AutumnWinter2022/codingOne/lecture_01.html#42">Joel's slides</a> on "what is computational thinking?")
-  </div>
- 
-  <div> Speaking of representation... 
-     <br /> 
-    A name can be a person's representation and we have not heard about your names yet 😜 
+    <div> How to get support?
+    <br /> - Reach out to me and Kayal via Slack or Email 
+     <br /> - The fun of being an autodidact: <a href="https://huggingface.co/"> Hugging Face</a>, <a href="https://www.arts.ac.uk/students/library-services">UAL Library</a>, 
+    <a href="https://chat.openai.com/">ChatGPT but be careful</a>, resources listed on our <a href="https://moodle.arts.ac.uk/course/view.php?id=87940">Moodle Page</a>
+  
   </div>
   
   
   <div> any questions so far? </div>
-  
-  <div> Numbers and Numeric representation </div>
-  
-  <div> 
-     What do we use (real) numbers for?
-  </div>
-  
-  <div> 
-    - To count things
-     <br />    
-    - To measure things
-      <br />   
-    - To label things
-      <br />   
-    - ...
-  </div>
-  
-  <div> 
-   <a href="https://www.youtube.com/shorts/jh0aYUlmsF0">007</a>        
-  </div>
-  
-  
-  <div> 
-  A side note:
+
+  <div>     
+       About me
+                  <br /> 
+                
+                <a href="xiaowan-yi.com">xiaowan yi</a>: sh-iao one e
+
+                <br />
+                she/they
+                <br />
+                
+                - I was born in Chengdu, China. My city is famous for panda 🐼, taoism ☯️ and spicy food 🌶️.
+                     <br /> 
+                - I live in Surrey Quays now.
+                 <br /> 
+                
+- I'm completing my PhD research in AI&Music at QMUL.
   <br /> 
-  - Do we really have numbers in the real world? Have you seen numbers walking on the street on their own?
+- I make sound and you can find some of my works <a href="https://vimeo.com/user65401583">here</a>.
+    <br /> 
+- I play drums 🥁 for electronic and groovy music.
   </div>
-  
+
+
+  <div> Recap on data modalities</div>
+
   <div> 
-  A side note:
-  <br /> 
-  Have you seen numbers walking on the street on their own?
-  <br />
-  - Numbers are often used with contexts. To connect numbers with reality, we always need interpretation guide(e.g. a protocol, unit, etc.) when using numbers in real life. 
-  <br />
-  - How to interpret numbers produced by computer programms is a helpful skill you can get from this unit.
-  </div>
-  
-  <div>
-   My number of chaos:
-   <br />     
-  -858993460                 
-  </div>
-  
-  <div> 
-  Why are numbers important in this unit?
+    Data modalities
      <br />    
-    - Our human-made poor machine can only deal with numbers 🫠
+    Information we can gather from the world and store in digital systems as "data", are mainly from four modalities:
       <br />   
-    - Numbers can introduce maths, which is our <a href="https://www.youtube.com/watch?v=nmvkhLz8t7I">DOMAIN EXPANSION 💥</a>
-      <br />   
-  </div>
-  
-  <div> 
-    “Information era”🍎💻
-     <br />    
-    Information we receive from the world are mainly from four modalities:
-      <br />   
-    - Image (video)
+    - Image (picture, video)
       <br />   
     - Text (written language)
       <br />   
     - Audio (music, speech)
       <br />   
-    - Number (the weather in degree celsius, your birthday, etc.  )
+    - Tabular(this week's weather in degree celsius, everyone's birthday in this class, sensor data, etc.)
       <br />  
       Can you think of any information that is not from the four categories?
   </div>
   
   
   <div> 
-    My mind-blowing moment:
-      <br />   
-    - Information from any of those three categories (image, text and audio) can be digitized / numberified aka be represented by just a bunch of numbers.
+    Data modalities
+     <br />    
+    - Each data modality has its own characteristics and challenges for representation, processing and analysis.
+      <br />
+     - We structure our unit syllabus based on the different data modalities, each week focusing on one modality (with a few exceptions).
+      <br />
   </div>
-  
+
+    <div> Recap on neural networks</div>
+
+
+
+    
   <div> How to numberify the size of digital images?
      <br />  
     - Two numbers for its width and height (how many pixels).
