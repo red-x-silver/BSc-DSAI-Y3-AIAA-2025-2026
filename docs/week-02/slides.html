@@ -42,13 +42,12 @@
   
      <br /> The theoretical: 
      <br /> - Introduction to the unit
-     <br /> - Quick revision on data modalities
-     <br />  - Quick revision on neural networks
+     <br /> - Quick revisions on data modalities and neural networks
      <br />  - AI applications in Computer Vision part 01
      <br />  - - Image classification, Object detection, Image segmentation, Keypoint detection
      <br /> The practical: 
-     <br /> - testing models on hugging face
-    <br /> - testing YOLO11 on your laptop / google colab notebook
+     <br /> - test(inference) models on hugging face
+    <br /> - test(inference) YOLOv11 on your laptop / google colab notebook
   
   </div>
   
@@ -115,7 +114,7 @@
   <div> 
     Data modalities
      <br />    
-    Information we can gather from the world and store in digital systems as "data", are mainly from four modalities:
+    Information that we can gather from the world and store in digital systems as "data", are mainly from four modalities:
       <br />   
     - Image (picture, video)
       <br />   
@@ -138,12 +137,145 @@
       <br />
   </div>
 
-    <div> Recap on neural networks</div>
+   <div> Recap on neural networks</div>
+
+    <div> 
+    Recap on neural networks
+    <br />    
+    - Architectures
+      <br />
+    - How to train a neural network?
+      <br />
+    - How to inference a neural network?
+    <br />
+    Recommended reading: 
+     <br />
+   - - <a href="http://neuralnetworksanddeeplearning.com/">Neural Networks and Deep Learning</a> by Michael Nielsen
+     <br />
+    - -  <a href="https://www.deeplearningbook.org/">Deep Learning Book</a> by Ian Goodfellow, Yoshua Bengio and Aaron Courville
+  </div>
+
+        <div> 
+    Neural network architecture
+    <br />    
+    - neural network comprises of layers
+      <br />
+    - there are different types of layers (fully connected, convolutional, recurrent, transformer, etc.)
+      <br />
+    - Here is a list of layers by <a href="https://docs.pytorch.org/docs/stable/nn.html">Pytorch</a> (have you used Pytorch before?)
+    </div>
 
 
 
-    
-  <div> How to numberify the size of digital images?
+        <div> 
+    Questions for checking understanding
+    <br />    
+    - What is a MLP?
+      <br />
+    - What is a CNN?
+      <br />
+    - What is a RNN?
+      <br />
+    - What is a Transformer?
+    </div>
+
+      <div> 
+    Recap on neural networks
+    <br />   
+    - How to inference a neural network? 
+    <br />  - - feed input data into the model and get the output from the model
+      <br /> - - also called the forward pass
+     <br /> - - also called 'inference'
+ </div>
+
+       <div> 
+    Recap on neural networks
+    <br />   
+    - How to train a neural network? The process:
+    <br />  - - feed input data into the model and get the output from the model
+      <br /> - - compare the model output with the ground truth and calculate the loss
+      <br /> - - use backpropagation to update the model parameters
+      <br /> - - repeat the above steps until the model converges
+      <br /> - - this whole process is called training
+      <br /> - - training involves both forward pass and backward pass
+
+ </div>
+
+        <div> 
+ 
+     How to train a neural network? The dataset and splits:
+      <br /> - - training is done on a training dataset
+      <br /> - - the trained model is then evaluated on a validation dataset and/or a test dataset
+      <br /> - - the trained model is then deployed for inference on new data
+ </div>
+
+        <div> 
+  How to train a neural network? The hyperparameters: 
+
+      <br /> - - training is done using an optimisation algorithm (e.g. SGD, Adam, etc.)
+      <br /> - - training is done using a loss function (e.g. cross-entropy, MSE, etc.)
+      <br /> - - training is done using a learning rate (e.g. 0.001, 0.01, etc.)
+      <br /> - - training is done using a batch size (e.g. 32, 64, etc.)
+      <br /> - - training is done using a number of epochs (e.g. 10, 20, etc.)
+      <br /> - - training is done using a validation set to monitor overfitting
+      <br /> - - training is done using regularisation techniques (e.g. dropout, weight decay, etc.)
+ <br /> !No need to hard memorise!
+    </div>
+
+        <div> 
+
+    Recommended reading: 
+     <br />
+   - - <a href="http://neuralnetworksanddeeplearning.com/">Neural Networks and Deep Learning</a> by Michael Nielsen
+     <br />
+    - -  <a href="https://www.deeplearningbook.org/">Deep Learning Book</a> by Ian Goodfellow, Yoshua Bengio and Aaron Courville
+  </div>
+
+
+      <div> AI in Computer Vision part 01 👁️</div>
+
+
+      <div> Computer Vision: a field of AI that teaches computers to "see" and interpret the visual world from images and videos, derive meaningful information from them. </div>
+
+ 
+
+
+      <div> 
+    👁️ Basic computer vision tasks: 
+     <br />    
+    - Image classification
+      <br />
+    - Object detection
+      <br />
+    - Image segmentation
+      <br />
+    - Keypoints detection
+  </div>
+
+        <div> 
+    👁️ Basic computer vision tasks, characterised by the model (neural network) outputs:
+     <br />    
+    - Image classification: outputs a class label.
+      <br />
+    - Object detection: outputs bounding boxes and class labels.
+      <br />
+    - Image segmentation: outputs pixel-wise masks and class labels.
+      <br />
+    - Keypoints detection: outputs keypoints and class labels.
+  </div>
+
+
+         <div> How about the input? How does a model "see" an image? </div>
+           <br />
+          - Model "sees" an image as numbers!
+           <br />  
+          - Digital images are made of pixels.
+          <br />
+          - Each pixel in the image is represented by a number (or a set of numbers for color images).  
+        </div>  
+
+  <div> 
+    👁️ Images represented by numbers:
      <br />  
     - Two numbers for its width and height (how many pixels).
     <br />  
@@ -162,240 +294,73 @@
      <br />     
   - One number for each pixel representing the greyscale value in grey images </div>
   </div>
-  
 
-  
-  <div> How to numberify digital audio? </div>
-  
-  <div class='layout' style='grid-template-rows:55% 45%;'>
-  <img src='https://cdn.glitch.global/0e13d0b6-6ebc-4330-9873-db7826d23957/sound-in-numbers.png?v=1696434561964'/>
-  <div>Here is one way to numberify digital audio:
-   <br />  
-    - A series of numbers where each number denotes a displacement value from silence at that point of time </div>
+          <div> 
+    👁️ Let's go to <a href="https://huggingface.co/">Hugging Face</a> (have you explored this platform before?) for web-based, ready-to-use models for:
+     <br />    
+    - Image classification
+      <br />
+    - Object detection
+      <br />
+    - Image segmentation
+      <br />
+    - Keypoints detection
   </div>
-  
-  <div> Here is one way to numberify text:
-  <br />  
-  - Think about when you are looking up a word in a dictionary📕 using page number and index
-  <br /> 
-  - To decode the pair of (page number, index) back to actual words, you will need to pass that dictionary around.
-  <br /> 
-  - OR?         
-  <br />           
-  - more on this in week11
-  </div>
-  
-  
-  <div> A tricky question for you!
-   <br /> 
-  How to numberify the label of an image being a dog🐶 image or a cat😼 image?
-  <br /> 
-  You are free to define any dictionary/protocol to explain the number(s) you have used.
-  </div>
-  
-  <div> One possible way:
-   <br /> 
-  - I will use two numbers and each number is either 0 or 1.
-   <br /> 
-  - I will have the first number indicating if there is a dog in the image.
-   <br />
-  - And I will have the second number indicating if there is a cat in the image.
-   <br />
-  - If it is a dog-only image: [1, 0] (square brackets here are optional)
-   <br />
-  - If it is a cat-only image: [0, 1]
-   <br />
-  - If it is a dog and cat image: [1, 1]
-   <br />
-  - What does this numeric representation [0, 0] mean in this context?           
-  </div>
-  
-  <div> any questions so far? </div>
-  
-  <div> Image classification </div>
-  
-  <div> What we will talk about today:
-   <br />  
-  - What is image classification? 
-   <br />  
-  - What can an image classification model do?
-   <br />   
-  What we will NOT talk about today:
-   <br />   
-  - How to make an image classification model from scratch?
-   <br />   
-  - How to modify an image classification model?         
-  </div>
-  
-  <div> Image classification
-   <br />  
-  - It is a machine learning and computer vision task. 
-   <br />  
-  - It is a stepping stone task in computer vision and computational pattern recognition. 
-   <br />  
-  - The goal is to train a model to recognize and assign a predefined label or class to an input image. 
-  </div>
-  
-  
-   <div> Your first AI model to inspect!!! </div>
-  
-   <div> One hack for inspecting any model: 
-    <br /> 
-    Because a model is about "input -> process -> output",
-    <br /> 
-    to inspect what a model does, one helpful starting point is to check its input and output!
-   </div>
-  
-  
-   <div> Input? Output? </div>
-  
-  
-   <div> Image classification model:
-     <br /> 
-    - Input: a digital image
-    <br /> 
-    - output: the predicted classes of the input image 
-   </div>
-    
-   <div> Image classification model:
-     <br /> 
-   Input (in a bit more details):
-    <br /> 
-   An image with a pre-defined size.
-    <br /> 
-   (but you can get around with the size limit simply by resizing and/or cropping images.)
-    <br /> 
-   (and be careful of the aspect ratio!)
-   </div>
-  
-   <div> Image classification model:
-     <br /> 
-     Output (in a bit more details):
-     <br /> 
-     Probabilities assigned to each class from a set of pre-defined classes.
-   </div>
-  
-   <div> 
-      Image classification model:
-      <br /> 
-      It outputs probabilities assigned to each class from a set of pre-defined classes.
-      <br /> 
-      Let's dive into the "pre-defined classes" bit 
-  </div>
-  
-   <div> Back to the example of dog🐶-or-cat😼 image classification model:
-     <br />
-       What are the pre-defined classes that this model can predict into?
-     <br />
-       - a class for "dog" and a class for "cat"
-     <br />
-       - Can this model tell us which vehicle the input image is?
-     <br />
-       - 🚫
-     <br />
-       - But it would be interesting to feed a 🚗 image into the model and see how it improvises.
-   </div>
-  
-   <div> 
-      Image classification model:
-      <br /> 
-      It outputs probabilities assigned to each class from a set of pre-defined classes.
-      <br /> 
-      Let's dive into the "probabilities" bit 
-  </div>
-  
-  <div> - It is primarily outputing a list of probabilities assigned to each class from the pre-defined class sets 
-   <br /> 
-    - From there, we can easily post-process the list of probabilities and output human-friendlier result like "which one is the most probable class?"
-  </div>
-    
-  <div> any questions so far? </div>
-  
-  <div> Takeaway messages from our first encounter with image classification models
-   <br />  
-  - Each model has a pre-defined input image size.
-    <br />  
-  - Each model has a pre-defined output classes range.
-  </div>
-  
-  
-   <div> A toy example on image classification in playground </div>
-  
-   <div> Has everyone installed Xcode? </div>
-  
-   <div> Download the playground <a href="https://moodle.arts.ac.uk/mod/resource/view.php?id=1251946">here</a> and double click the file to open it (Xcode should be fired up automatically)</div> 
-  
-   <div> 
-     Don't panic about the chunks of swift code 💙
-     <br />
-     - The code has been prepared and is ready to run.
-     <br />
-     - It can predict the given input image's class, one image at a time.
-  </div>
-  
-  <div> 
-      All we have to do for this lecture is to:
-      <br /> 1. Run the playground as it is.
-      <br /> 2. Check the classfication results.
-      <br /> 3. Inspect the loaded classification model's input image size and output classes.
-      <br /> 4. Swap to another input image and run the playground.
-  </div>
-  
-  <div class='layout' style='grid-template-rows:65% 35%;'>
-  <img src='https://cdn.glitch.global/0e13d0b6-6ebc-4330-9873-db7826d23957/RunThePlayground.png?v=1696457336223'/>
-  <div>This is how you can run the playground and check the classification results 👻 </div>
-  </div>
-  
-  
-  <div class='layout' style='grid-template-rows:65% 35%;'>
-  <img src='https://cdn.glitch.global/0e13d0b6-6ebc-4330-9873-db7826d23957/InspectInputSize.png?v=1696455426041'/>
-    <div>This is where you can inspect the model's input image size👋
-    <br />  
-    - Bonus question: go back to the main file and check the code in line 25, have you seen some familiar numbers? What does these numbers mean?</div>
-  </div>
-  
-  <div class='layout' style='grid-template-rows:65% 35%;'>
-  <img src='https://cdn.glitch.global/0e13d0b6-6ebc-4330-9873-db7826d23957/InspectOutputClasses.png?v=1696455442367'/>
-  <div>This is where you can inspect the model's output classes 🌛
-   <br />  
-  - Bonus question: how many classes can this model predict from?</div>
-  </div>
-  
-  <div class='layout' style='grid-template-rows:65% 35%;'>
-  <img src='https://cdn.glitch.global/0e13d0b6-6ebc-4330-9873-db7826d23957/ChangeInputImage.png?v=1696457930265'/>
-  <div>This is how you can swap the input image 💅
-   <br />  
-  - Bonus question: try using other images from your laptop (you can download new interesting ones from the internet) as the input image </div>
-  </div>
-   
-  <div>  <a href="https://www.youtube.com/watch?v=bqeQByqf_f8">A nice App</a> that makes good use of image classification model </div>
 
-  <div> Today we have talked about:
-     <br />
-     Representation 🧠
-       <br /> - descriptive, perspective, and contextual
-       <br />
-     Numeric representation 🌶️
-       <br /> - How image, audio and text can be represented by numbers
-       <br />
-      Image classification 🕹️
-       <br /> - Given an input image, which is of a pre-defined size, a IC model predicts the probabilities of that image assigned to each class from a pre-defined set of classes.
-  </div>
-  
-  
-  <div> Homework :)
-       <br />
-       Hands-on:
-       <br /> Select one public dataset of interest and sketch a visualization plan.
-      Readings:
-       <br /> Read the linked resources, and make notes on thoughts, questions, inspirations and associations.
+    <div> Check out computer vision models adopted by <a href="  https://developer.apple.com/machine-learning/models/">Apple Core ML</a> 
+     <br /> These are the industry standard models.
+ <br /> Practice:
+      <br /> - Pick one model that can do one of the four basic computer vision tasks, and research on:
+      <br /> - - What is the model name?
+      <br /> - - Is there a public code repository e.g. github?
+      <br /> - - What dataset is the model trained on?
+      <br /> - - What is the size of the model?
+      <br /> - - What is the model performance like, on what evaluation metrics?
+    </div>
+
+
+      <div> 
+    YOLO on <a href="https://github.com/ultralytics/ultralytics">Ultralytics</a> 
+     <br />    
+    - <a href="https://docs.ultralytics.com/tasks/">What are the tasks that YOLOv11 can do?</a>  
+      <br />
+    - What are the outputs of YOLOv11 for each of the tasks?
 
   </div>
-  
+
+      <div> 
+    YOLO on <a href="https://github.com/ultralytics/ultralytics">Ultralytics</a> 
+     <br />    
+    Hands-on: 
+      <br />
+    - Inference YOLOv11 on the google colab notebook.
+      <br />
+    - Inference YOLOv11 on your laptop.
+    <br />
+    Keep a cool dev note of:
+      <br />
+    - - Error messages you have encountered
+    <br />
+    - - Words that you don't understand
+    <br /> 
+    - - Things that you find interesting
+  </div>
+
+        <div> 
+    YOLO on <a href="https://github.com/ultralytics/ultralytics">Ultralytics</a> 
+     <br />    
+    Homework:
+      <br />
+    - Inference YOLOv11 on your laptop for all 4 tasks.
+    <br />
+    - Inference YOLOv11 on the workstation.
+    <br />
+    - [Optional but highly rewarding] Fine tuning YOLOv11 on the workstation, using a custom dataset.
+  </div>
 
   
   <div> 
-    We'll see you next Tuesday same time and same place!
+    We'll see you next Monday same time and same place!
   </div>
   
 </body>
