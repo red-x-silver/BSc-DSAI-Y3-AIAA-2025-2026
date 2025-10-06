@@ -296,38 +296,7 @@
 
       <div> Computer Vision: a field of AI that teaches computers to "see" and interpret the visual world from images and videos, and derive meaningful information from them. </div>
 
- 
-
-
-      <div> 
-    👁️ Basic computer vision tasks: 
-     <br />    
-    - Image classification
-      <br />
-    - Object detection
-      <br />
-    - Image segmentation
-      <br />
-    - Keypoints detection
-    
-  </div>
-
-        <div> 
-    👁️ Basic computer vision tasks, characterised by the model (neural network) outputs:
-     <br />    
-    - Image classification: outputs a class label.
-      <br />
-    - Object detection: outputs bounding boxes and class labels.
-      <br />
-    - Image segmentation: outputs pixel-wise masks and class labels.
-      <br />
-    - Keypoints detection: outputs keypoints and class labels.
-      <br />
-       What "meaningful information" do these tasks derive from images?
-  </div>
-
-
-         <div> How about the input? How does a model "see" an image? 
+          <div> First question: how does a model in our computer "see" an image? 👁️ 
            <br />
           - Model "sees" an image as numbers!
            <br />  
@@ -352,10 +321,57 @@
   <img src='https://cdn.glitch.global/0e13d0b6-6ebc-4330-9873-db7826d23957/pixels.png?v=1696434561327'/>
   <div>Here is one way to numberify digital images:
      <br />  
-  - Three numbers for each pixel representing the RGB values in color images
+  - Three numbers for each pixel representing the RGB values in color images, e.g. [256, 0, 128] for purple 🟪
      <br />     
-  - One number for each pixel representing the greyscale value in grey images </div>
+  - One number for each pixel representing the greyscale value in grey images, e.g. [128] for a medium grey 🩶</div>
+  <br />     
+  - Put together these color-indicating numbers for all pixels in a multi-dimensional array (also called tensor in deep learning) to represent the image.
   </div>
+
+
+  <div> After "seeing" the images, what meaningful information a model can derive from them? 👁️</div>
+
+      <div> 
+    👁️ Basic computer vision tasks: 
+     <br />    
+    - Image classification
+      <br />
+    - Object detection
+      <br />
+    - Image segmentation
+      <br />
+    - Keypoints detection
+    
+  </div>
+
+        <div> 
+    👁️ Basic computer vision tasks, characterised by the model (neural network) outputs:
+     <br />    
+    - Image classification: outputs a class label.
+      <br />
+    - Object detection: outputs bounding boxes and class labels.
+      <br />
+    - Image segmentation: outputs pixel-wise masks and class labels.
+      <br />
+    - Keypoints detection: outputs keypoints and class labels.
+       
+  </div>
+
+
+      <div> 
+    👁️ What exactly "meaningful information", in a more human friendly language, do these tasks derive from images?
+     <br />    
+    - Image classification: what is in the image? 
+      <br />
+    - Object detection: what is in the image and where is it roughly?
+      <br />
+    - Image segmentation: what is in the image and where is it at the finest level?
+      <br />
+    - Keypoints detection: where are the important points/coordinates in the image?
+
+  </div>
+
+
 
           <div> 
     👁️ Let's go to <a href="https://huggingface.co/">Hugging Face</a> (have you explored this platform before?) for web-based, ready-to-use models for:
