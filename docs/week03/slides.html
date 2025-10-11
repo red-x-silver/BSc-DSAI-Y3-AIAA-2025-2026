@@ -33,7 +33,7 @@
     <br />
     Lecture 03
     <br />
-    AI in Computer Vision part 2 👁️  
+    AI in Computer Vision part 2 - generative models 👁️  
   </div>
     
   <div>Welcome 👩‍🎤🧑‍🎤👨‍🎤</div>
@@ -55,451 +55,224 @@
   
   <div> First of all, don't forget to confirm your attendence on <a href="https://www.arts.ac.uk/study-at-ual/course-regulations/attendance-policy/attendance-monitoring"> SEAtS App!  </a></div>
 
-  <div> What is this unit about? </div>
+  
 
-  <div> State-of-the-art AI deployment in professional ecosystems, with applications and advanced analytics in a wide range of domains including: </div>
+  <div> Three types of generative models in computer vision - different architectures and mechanisms </div>
 
   <div>
-    - Large language model (week 01) 🗣️
+    - VAE: Variational AutoEncoder 
     <br /> 
-    - AI in Computer Vision (week 02, 03) 👁️
+    - GAN: Generative Adversarial Networks
     <br /> 
-    - AI in audio and music (week 04, 05) 🎵
-    <br /> 
-    - AI in 3D and gaming (week 06, 07) 🎮
-    <br /> 
-    - AI in affective computing (week 08) 🧠
-    <br /> 
-    - AI in recommender systems (week 09) 🤖
-    <br /> 
-    - Multi-modal AI (week 10) 🌀
-    <br /> 
-    - Explainable AI (week 11) 🔍
+    - Diffusion
   </div>
 
-    <div> How to get support?
-    <br /> - Reach out to me and Kayal via Slack or Email 
-     <br /> - The fun of being an autodidact: <a href="https://huggingface.co/"> Hugging Face</a>, <a href="https://www.arts.ac.uk/students/library-services">UAL Library</a>, 
-    <a href="https://chat.openai.com/">ChatGPT but be careful</a>, resources listed on our <a href="https://moodle.arts.ac.uk/course/view.php?id=87940">Moodle Page</a>
+    <div> VAE
+    <br /> - Check the fun demo on this worth-reading article <a href="https://distill.pub/2017/aia/"> Using Artificial Intelligence to Augment Human Intelligence </a>
+     <br /> - The font generating model is a VAE under the hood. 
   
   </div>
 
-    <div> This is a very fun and practice-based unit, to get you ready for your final thesis project and beyond. 
+  <div> VAE is a variant of a neural net architecture called AE (Autoencoder) 
+  <br /> Let's start from introducing the architecture of AE.
+  </div>
+
+    <div>  AE - the architecture 🤗
      <br /> 
-     - We'll play around with a LOT of pre-trained and ready-to-use models during each lecture. 🤗 
+     - 1. It is characterised by a bottleneck hidden layer - layer that has a *small* number of neuron which forces information to be compressed to have lower dimensions.
      <br /> 
-     - We expect you to spend 16 hours each week outside the lecture time to do the readings📖, hands-on practice & homework✋ on this unit.
+     - 2. Training is done via reconstructing the input, i.e. the output layer tries to output exactly what is in the input layer.
       <br />  
-      - It will be a very rewarding experience if you put in the effort. We will support you all the way! 🫵
+      - 3. This "encode - decoder" or "compress - decompress" setup may seem redundant, but doing so allows us to extract the "essence" representation from the bottleneck layer.
   
   </div>
   
   
-  <div> any questions so far? </div>
+
 
   <div>     
-       About me
+       VAE - the architecture 🤗
                   <br /> 
                 
-                <a href="xiaowan-yi.com">xiaowan yi</a>: sh-iao one e
+               Read <a href="https://towardsdatascience.com/difference-between-autoencoder-ae-and-variational-autoencoder-vae-ed7be1c038f2/">this article</a>
 
                 <br />
                 
-                - I was born in Chengdu, China. My city is famous for panda 🐼, taoism ☯️ and spicy food 🌶️.
+                - 1.The bottleneck layer of AE is deterministic - same input gets the same bottleneck representation.
                      <br /> 
-                - I live in Surrey Quays now.
+                - 2. VAE changes the deterministic bottleneck layer into a layer with a distribution ("randomness").
                  <br /> 
+                - 3. Check the article for why and how.
                 
-- I'm completing my PhD research in AI&Music at QMUL.
-  <br /> 
-- I make sound and you can find some of my works <a href="https://vimeo.com/user65401583">here</a>.
-    <br /> 
-- I play drums 🥁 for electronic and groovy music.
   </div>
 
 
 
-  <div> Recap on "data modality"</div>
+  <div> Move onto GAN </div>
 
   <div> 
-    Data modalities🕶️
+    GAN 🕶️
      <br />    
-    Information that we can gather from the world and store in digital systems as "data", are mainly from four modalities:
+    Fun applications: 
       <br />   
-    - 👁️Image (picture, video)
+    - <a href="https://thispersondoesnotexist.com/">thispersondoesnotexist</a> 
       <br />   
-    - 📝Text (written language)
+    - <a href="https://thisjellyfishdoesnotexist.com/">/thisjellyfishdoesnotexist</a> 
       <br />   
-    - 🎵Audio (music, speech)
+    - <a href="https://gandissect.csail.mit.edu/">GAN dissect - surgical operations on images</a> 
       <br />   
-    - 🧩Tabular(this week's weather in degree celsius, everyone's birthday in this class, sensor data, etc.)
-      <br />  
-      Can you think of any information that is not from the four categories?
+    - <a href="https://github.com/XingangPan/DragGAN">DragGAN - more surgical operations on images </a> 
   </div>
   
   
   <div> 
-    Data modalities🕶️
+    How does GAN work? 🕶️ the configuration: 
      <br />    
-    - Each data modality has its own characteristics and challenges for representation, processing and analysis.
-      <br />
-     - We structure our unit syllabus based on the different data modalities, each week focusing on one modality (with a few exceptions).
-      <br />
+    - It is an ensemble of two neural networks - a Generator (G) and a Discriminator (D).
+       <br />    
+     - We have a training dataset that comprises images that you want the model to model from, we would refer to these as "real" images, as opposed to the generated "fake" ones.
+ 
   </div>
 
-    <div>
-      Modalities covered in each week:
-      <br />
-    - Large language model 🗣️: text, multi-modal 
-    <br /> 
-    - AI in Computer Vision (week 02, 03) 👁️: images, multi-modal
-    <br /> 
-    - AI in audio and music (week 04, 05) 🎵: audio, multi-modal
-    <br /> 
-    - AI in 3D and gaming (week 06, 07) 🎮: images, multi-modal
-    <br /> 
-    - AI in affective computing (week 08) 🧠: text, audio, image
-    <br /> 
-    - AI in recommender systems (week 09) 🤖: tabular, multi-modal
-    <br /> 
-    - Multi-modal AI (week 10) 🌀: well
-    <br /> 
-    - Explainable AI (week 11) 🔍: modality invariant
+    
+  <div> 
+    How does GAN work? 🕶️ what are the G and the D doing?
+     <br />    
+    - Discriminator: a good old classification model that predicts if an image is real (from the training dataset) or fake (being generated).
+       <br />    
+    - Generator: it take a random vector as input and outputs a 2D matrix as a generated image.
+  <br />    
+    (no magic yet... we just set up two individual neural nets.)
+
   </div>
-
-
-   <div> Recap on neural networks</div>
 
     <div> 
-    Recap on neural networks 🤖
+    How does GAN work? 🕶️ the training process:
      <br />    
-    - Neural networks are a type of machine learning model that are inspired by the structure and function of the biological neural networks.
-      <br />
-    
-    <br />    
-    - Key points:
-      <br />    
-    - - Architectures
-      <br />
-    - - How to train a neural network?
-      <br />
-    - How to inference a neural network?
-    <br />
-    Recommended reading: 
-     <br />
-   - - <a href="http://neuralnetworksanddeeplearning.com/">Neural Networks and Deep Learning</a> by Michael Nielsen
-     <br />
-    - -  <a href="https://www.deeplearningbook.org/">Deep Learning Book</a> by Ian Goodfellow, Yoshua Bengio and Aaron Courville
+    - The magic happens when we train G and D alternatively in a particlar way:
+       <br />    
+   - - It is a tom and jerry game between these two networks Generator 🐭 and Discriminator 🐈
+  <br />    
+   - - where D tries to catch G as a fake image generator ️🕵️‍♀️
+   <br />    
+   - - and G tries to fool D into thinking that G produces real images 🤡
+
   </div>
 
-        <div> 
-    Neural network architecture 🎳
-    <br />    
-    - Neural nets comprise of layers.
-      <br />
-    - There are different types of layers (fully connected, convolutional, recurrent, attention, etc.)
-      <br />
-    - Here is <a href="https://docs.pytorch.org/docs/stable/nn.html">a list of layers implemented by Pytorch</a> (have you used Pytorch before?)
-    </div>
-
-
-
-        <div> 
-    Questions for checking understanding 🤔
-
-    <br />    
-    - What is a MLP?
-      <br />
-    - What is a CNN?
-      <br />
-    - What is a RNN?
-      <br />
-    - What is a Transformer?
-    </div>
-
-      <div> 
-   🤔 How to inference a neural network? The process:
-    <br />  - - feed input data into the model and get the output from the model
-      <br /> - - also called the forward pass
-     <br /> - - also called 'testing' or 'evaluation'
-      <br /> - - inference does not involve backpropagation
-      <br /> !No need to hard memorise!
- </div>
-
-       <div> 
-     🤔 How to train a neural network? The process:
-    <br />  - - feed input data into the model and get the output from the model
-      <br /> - - compare the model output with the ground truth and calculate the loss
-      <br /> - - use backpropagation to update the model parameters
-      <br /> - - repeat the above steps until the model converges
-      <br /> - - this whole process is called training
-      <br /> - - training involves both forward pass and backward pass
-
- </div>
-
-        <div> 
- 
-    🤔 How to train a neural network? The dataset and splits:
-      <br /> - - training is done on a training dataset
-      <br /> - - the trained model is then evaluated on a validation dataset and/or a test dataset
-      <br /> - - the trained model is then deployed for inference on new data
- </div>
-
-        <div> 
-  🤔 How to train a neural network? The hyperparameters: 
-
-      <br /> - - training is done using an optimisation algorithm (e.g. SGD, Adam, etc.)
-      <br /> - - training is done using a loss function (e.g. cross-entropy, MSE, etc.)
-      <br /> - - training is done using a learning rate (e.g. 0.001, 0.01, etc.)
-      <br /> - - training is done using a batch size (e.g. 32, 64, etc.)
-      <br /> - - training is done using a number of epochs (e.g. 10, 20, etc.)
-      <br /> - - training is done using a validation set to monitor overfitting
-      <br /> - - training is done using regularisation techniques (e.g. dropout, weight decay, etc.)
- <br />
-      <br /> !No need to hard memorise! These knowledges are best internalised through hands-on practice.
-    </div>
-
-
-            <div> 
- 
-     📙 Terminologies:
-      <br /> 1️⃣Pre-trained
-      <br /> - - means a ready-to-use model
-      <br /> - - means a model that has been trained on a dataset (often large) and can be fine-tuned on a smaller dataset for a specific task in the future
-       <br />
-      <br /> 2️⃣Fine-tuning 
-      <br /> - - means further training a pre-trained model on a smaller dataset for a specific task
-      <br /> - - means updating the model parameters using backpropagation on the smaller dataset
-      <br /> - - means the model is adapted to the specific task and the dataset
-      <br /> - - means the model is not trained from scratch
-       <br />
-      <br /> 3️⃣Transfer learning
-      <br /> - - means using a pre-trained model for a different but related task
-      <br /> - - also means the model is not trained from scratch
-      <br /> - - fine-tuning is a special case of transfer learning
-      <br /> - - transfer learning can be done without fine-tuning (e.g. using the pre-trained model as a feature extractor and adding new layers to the model for training on the new task)
-    </div>
- </div>
-
-        <div> 
-
-    Recommended reading: 
-     <br />
-   - - <a href="http://neuralnetworksanddeeplearning.com/">Neural Networks and Deep Learning</a> by Michael Nielsen
-     <br />
-    - -  <a href="https://www.deeplearningbook.org/">Deep Learning Book</a> by Ian Goodfellow, Yoshua Bengio and Aaron Courville
-  </div>
-
-
-      <div> AI in Computer Vision part 01 👁️</div>
-
-
-      <div> Computer Vision: a field of AI that teaches computers to "see" and interpret the visual world from images and videos, and derive meaningful information from them. </div>
-
-          <div> First question: how does a model in our computer "see" an image? 👁️ 
-           <br />
-          - Model "sees" an image as numbers!
-           <br />  
-          - Digital images are made of pixels.
-          <br />
-          - Each pixel in the image is represented by a number (or a set of numbers for color images).  
-        </div>  
-
-  <div> 
-    👁️ Images represented by numbers:
-     <br />  
-    - Two numbers for its width and height (how many pixels).
-    <br />  
-    e.g. 3840 x 2160 for 4K resolution        
-    <br />      
-    - Sometimes another number for how many color channels there are.
-   <br />      
-    e.g. 256 x 256 x 3 for an RGB color image
-  </div>
   
-  <div class='layout' style='grid-template-rows:55% 45%;'>
-  <img src='https://cdn.glitch.global/0e13d0b6-6ebc-4330-9873-db7826d23957/pixels.png?v=1696434561327'/>
-  <div>Here is one way to numberify digital images:
-     <br />  
-  - Three numbers for each pixel representing the RGB values in color images, e.g. [256, 0, 128] for purple 🟪
-     <br />     
-  - One number for each pixel representing the greyscale value in grey images, e.g. [128] for a medium grey 🩶</div>
-  <br />     
-  - Put together these color-indicating numbers for all pixels in a multi-dimensional array (also called tensor in deep learning) to represent the image.
-  </div>
 
 
-  <div> After "seeing" the images, what meaningful information a model can derive from them? 👁️</div>
+   <div> <a href="https://www.youtube.com/watch?v=_qB4B6ttXk8">a good explaination on YTB </a>   </div>
 
-      <div> 
-    👁️ Basic computer vision tasks: 
-     <br />    
-    - Image classification
-      <br />
-    - Object detection
-      <br />
-    - Image segmentation
-      <br />
-    - Keypoint detection
-    
+    <div> 
+
   </div>
 
         <div> 
-    👁️ Basic computer vision tasks, characterised by the model (neural network) outputs:
-     <br />    
-    - Image classification: outputs a class label.
+   Hands-on 🎳
       <br />
-    - Object detection: outputs bounding boxes and class labels.
-      <br />
-    - Image segmentation: outputs pixel-wise masks and class labels.
-      <br />
-    - Keypoint detection: outputs Keypoint and class labels.
-       
-  </div>
-
-
-      <div> 
-    👁️ What exactly "meaningful information", in a more human friendly language, do these tasks derive from images?
-     <br />    
-    - Image classification: what is in the image? 
-      <br />
-    - Object detection: what is in the image and where is it roughly?
-      <br />
-    - Image segmentation: what is in the image and where is it at the finest level?
-      <br />
-    - Keypoint detection: where are the important points/coordinates in the image?
-
-  </div>
-
-
+    - Let's take a look at this <a href="https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/tutorials/generative/dcgan.ipynb">google colab notebook for training a simple GAN</a> 
+     <br />
+      - - Which part of code corresponds to Generator?
+           <br />
+      - - Which part of code corresponds to Discriminator?
+        <br />
+       - - Which part of code corresponds to assemblying G and D losses ?   
+        </div>
 
           <div> 
-    👁️ Let's go to <a href="https://huggingface.co/">Hugging Face</a> (have you explored this platform before?) for web-based, ready-to-use models for:
-     <br />    
-    - Image classification
+   Problems of the vanilla GAN
       <br />
-    - Object detection
-      <br />
-    - Image segmentation
-      <br />
-    - Keypoint detection
-  </div>
-
-           <div> 
-    👁️ Let's go to <a href="https://github.com/tensorflow/tfjs-models/tree/master">Tensorflow.js github repo</a> (have you explored this platform before?) for models and demos for:
-     <br />    
-    - Image classification
-      <br />
-    - Object detection
-      <br />
-    - Image segmentation
-      <br />
-    - Hand/Pose/Facial Keypoint detection
-  </div>
-
-
-
-        <div> fun AI time 🎉
-
-      <br /> Artworks that uses face detection
-      <br /> - <a href="https://notnot.home.xs4all.nl/pareidolia/pareidolia.html">Pareidolia*</a>
-      <br /> - - facial detection is applied to grains of sand. A fully automated robot search engine examines the grains of sand in situ. When the machine finds a face in one of the grains, the portrait is recorded.
-      <br /> - <a href="https://www.youtube.com/watch?v=N-3NwGkF8Pw">Hello </a>
-       <br /> - - a large-scale kinetic sculpture in the form of an ancient Greek architectural pillar which observes its surroundings as if nodding to visitors, moving like a mutated snake.
-    </div>
-
-
-
-    <div> Check out computer vision models adopted by <a href="  https://developer.apple.com/machine-learning/models/">Apple Core ML</a> 
-     <br /> These are the industry-level models.
-     <br /> What attibutes are important for models to be industry standard?
-    </div>
-
-        <div> Check out computer vision models adopted by <a href="  https://developer.apple.com/machine-learning/models/">Apple Core ML</a> 
-     <br /> What attibutes are important for models to be industry standard?
-     <br /> - Performance in accuracy/precision/robustness, size, inference time (speed), etc. 
-
- <br /> ✋Practice:
-      <br /> - Pick one model that can do one of the four basic computer vision tasks, and research on:
-      <br /> - - What is the model name?
-      <br /> - - Is there a public code repository e.g. github?
-      <br /> - - What dataset is the model trained on?
-      <br /> - - What is the size of the model?
-      <br /> - - Any inference time (speed) information?
-      <br /> - - Is the model trained from scratch or fine-tuned on another model?
-      <br /> - - What is the model performance like, on what evaluation metrics?
-      <br /> 👐 Let's share our findings after 25 mins!👐
-    </div>
- 
+    - 😥It is notoriously unstable to train sometimes.
+     <br />
+     - 🥵Think about what happen if the D learns too fast and becomes a really good discriminator while the generator has barely learned anything?
+           <br />
+      (The generator can no longer get good supervision signal and just get stuck being a noise generator - in this case we have to terminate the training and start over again with a different settup, e.g. another random seed, etc. )
+        </div>
 
       <div> 
-    YOLO on <a href="https://github.com/ultralytics/ultralytics">Ultralytics</a> 
-     <br /> 
-     - an advanced computer vision model family first introduced by Joseph Redmon et al. in 2015, now maintained and developed (with different versions) by Ultralytics, known for its high speed, accuracy, and versatility.   
-      <br /> 
-    - are deployed in various industry applications including autonomous vehicles, robotics, text recognition, visual inspection systems, and more.
+    Variants of GAN that performs better:
+     <br />    
+    - WGAN 
       <br />
-    - now it is YOLOv11, though <a href="https://yolov8.com/">YOLOv8</a> is also widely used.
-      <br />  
-    - what is the full name of YOLO?  
-    <br />  
-    - A gentle introduction from the main developer <a href="https://www.youtube.com/watch?v=Cgxsv1riJhI">gentle introduction from the main developer</a>
-    
+    - <a href="https://jonathan-hui.medium.com/gan-wasserstein-gan-wgan-gp-6a1a2aa1b490">ProGAN</a> (Progressive growing GAN)
+      <br />
+    - <a href="https://pub.towardsai.net/introduction-to-stylegan-ec0a6b0706c">StyleGAN</a> 
+    <br />
+    StyleGAN is the "industry-level" GAN which is behind thispersondoesnotexist and <a href="https://thisxdoesnotexist.com/">more</a>  etc.
+
   </div>
 
-
-    <div> 
-    YOLO on <a href="https://github.com/ultralytics/ultralytics">Ultralytics</a> 
-     <br /> 
-    - <a href="https://docs.ultralytics.com/tasks/">What are the tasks that YOLOv11 can do?</a>  
-      <br />
-    - What are the outputs of YOLOv11 for each of the tasks?
-
+     <div> 
+ Just in case if you want to train a <a href="https://github.com/red-x-silver/PokeGAN">Pokemon GAN</a>  
   </div>
   
+  
+       <div> 
+ DIFFUSION!
+         - Let's have some <a href="https://huggingface.co/spaces/stabilityai/stable-diffusion">stable diffusion fun</a>  
+  </div>
 
       <div> 
-    YOLO on <a href="https://github.com/ultralytics/ultralytics">Ultralytics</a> 
+    Diffusion model! - high level understanding - level 0
      <br />    
-    Hands-on: 
+    - It's yet another generative model.
       <br />
-    - Inference YOLOv11 on the google colab notebook.
-      <br />
-    - Setup YOLOv11 on your laptop and inference YOLOv11 from your laptop.
-    <br />
-    📘 Keep a cool dev note of:
-      <br />
-    - - Error messages you have encountered
-    <br />
-    - - Words that you don't understand
-    <br /> 
-    - - Things that you find interesting
+    - Recall that the GAN model generates an image from some sampled random noise?
+<br />
+   - Diffusion model also generates an image from some sampled random noise.
+<br />
+    - Though the diffusion model deploys a very different mechanism for image denoising/generation.
   </div>
 
         <div> 
-    YOLO on <a href="https://github.com/ultralytics/ultralytics">Ultralytics</a> 
+    Diffusion model! - high level understanding - level 1
      <br />    
+    ✌️There are two processes involved in training a diffusion
+model: forward diffusion and backward diffusion.
+      <br />
+    - ⏩Forward diffusion: we start from a clear good image, and gradually add noises to it till it is completely noisy.
+<br />
+   - ⏪Backward/reverse diffusion: we start from a noise-only image, and gradually remove noises from it till it becomes a clear good image.
+<br />
+   - The actual generation process when inferencing a diffusion model is just that reverse diffusion process.
+  </div>
+  
+     <div> 
+ Check <a href=" https://youtu.be/J87hffSMB60?si=be9j3Y4JPRDJXeLz">this tutorial on stable diffusion</a>  
+  </div>
+
+       <div> 
+ How about the text input, aka the multi-modal stuff?
+         - Let's read <a href="https://jalammar.github.io/illustrated-stable-diffusion/">this article</a>  
+  </div>
+ 
+   
+        <div> 
+  
     Homework:
       <br />
-    - Inference YOLOv11 on your laptop for all 4 tasks, keep a record of the inference time.
+    - Inference <a href="https://github.com/NVlabs/stylegan3">StyleGAN3</a> or S<a href="https://github.com/NVlabs/stylegan2">StyleGAN2</a> (choose one or more pre-trained models from the repos) on your laptop or workstation
+   <br />
+    - Train a <a href="https://github.com/red-x-silver/PokeGAN">Pokemon GAN</a> on your laptop or the workstation. Show me your pokemons!
+   <br />
+     - Inference a stable diffusion model from your laptop with the <a href="https://huggingface.co/docs/diffusers/main/en/api/pipelines/stable_diffusion/overview">hugging face library for stable diffusions</a>, it is SO HANDY!
     <br />
-    - Setup YOLOv11 on the workstation and inference YOLOv11 from the workstation utilising GPU, keep a record of the inference time.
+    - SEND ME your dev note by next Monday!
     <br />
-    - SEND ME your dev note and inference time records by next Monday!
-    <br />
-    - [Optional but highly rewarding] Fine tuning YOLOv11 on the workstation, using a custom dataset (think of an applicatin that is interesting to you! check public datasets on <a href="https://public.roboflow.com/">roboflow</a> for inspiration).
+    - [Optional but highly rewarding] Train a StyleGANX on the workstation, using a custom dataset (think of an applicatin that is interesting to you!).
   </div>
 
           <div> 
     🕶️ What we have learnt today:
       <br />
-    - Recap on data modalities and neural networks
+    - VAE
     <br />
-    - Image classification, Object detection, Image segmentation, Keypoint detection
+    - GAN
     <br />
-    - Played around with pre-trained computer vision models on Hugging Face, Tensorflow.js and Apple Core ML
+    - Diffusion
     <br />
-    - Inspect and inference an example of industry-level computer vision model: YOLOv11
+    - Inspect and inference examples of industry-level generative model: StyleGAN, Stable Diffusion
   </div>
   
   <div> 
