@@ -57,7 +57,30 @@
 
   <div> Three types of generative models in computer vision - different architectures and mechanisms </div>
 
+   <div> 🤓 what are we talking about when we talk about "a model that can generate images"? </div>
+
+  <div> 🤓 we are talking about: 
+     <br /> 
+    - models that can *output* images: what does this tell you about the shape of the last layer of the model?
+     <br /> 
+    - - The number of neurons in the last layer = [the number of pixels * the number of color channels] in the desired output image. </div>
+
+  <div> 🤓 we are talking about: 
+     <br /> 
+    - models that can output images *according to some human instruction*
+     <br /> 
+    - - We'll see later that human instruction can come from the curation of training dataset and/or model's input layer. </div>
+
+  <div> 🤓 we are talking about: 
+     <br /> 
+    - models that can output images that do not look like the same every time: there should be some sort of randomness in the inference process.
+     <br /> 
+    - - We'll see later that all generative models have some sort of "sampling process" to get "randomly sampled vectors" that are of the same shape but have different values everytime sampled. </div>
+
+  
   <div>
+  Let's move on to demystify the main three image generative model families, one by one 😎
+    <br /> 
     - VAE: Variational AutoEncoder 
     <br /> 
     - GAN: Generative Adversarial Networks
@@ -65,13 +88,13 @@
     - Diffusion
   </div>
 
-    <div> VAE
+    <div> 😎 VAE
     <br /> - Check the fun demo on this worth-reading article <a href="https://distill.pub/2017/aia/"> Using Artificial Intelligence to Augment Human Intelligence </a>
      <br /> - The font generating model is a VAE under the hood. 
   
   </div>
 
-  <div> VAE is a variant of a neural net architecture called AE (Autoencoder) 
+  <div> 😎 VAE is a variant of a neural net architecture called AE (Autoencoder) 
   <br /> Let's start from introducing the architecture of AE.
   </div>
 
@@ -106,7 +129,7 @@
 
 
 
-  <div> Move onto GAN </div>
+  <div> 😎 Move onto GAN </div>
 
   <div> 
     GAN 🕶️
@@ -189,7 +212,7 @@
         </div>
 
       <div> 
-    Variants of GAN that performs better:
+    😎 Variants of GAN that performs better:
      <br />    
     - WGAN 
       <br />
@@ -207,12 +230,12 @@
   
   
        <div> 
- DIFFUSION!
+ 😎 DIFFUSION!
          - Let's have some <a href="https://huggingface.co/spaces/stabilityai/stable-diffusion">stable diffusion fun</a>  
   </div>
 
       <div> 
-    Diffusion model! - high level understanding - level 0
+   😎 Diffusion model! - high level understanding - level 0
      <br />    
     - It's yet another generative model.
       <br />
@@ -224,7 +247,7 @@
   </div>
 
         <div> 
-    Diffusion model! - high level understanding - level 1
+    😎 Diffusion model! - high level understanding - level 1
      <br />    
     ✌️There are two processes involved in training a diffusion
 model: forward diffusion and backward diffusion.
@@ -264,6 +287,7 @@ model: forward diffusion and backward diffusion.
           <div> 
     🕶️ What we have learnt today:
       <br />
+   Three types of model family for generating images:
     - VAE
     <br />
     - GAN
