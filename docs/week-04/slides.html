@@ -45,7 +45,7 @@
      <br />  - Introduction to voice clone applications
     
      <br /> The practical: 
-     <br /> - build a Web App that uses OpenAI's Whisper API
+     <br /> - build a Web App that uses OpenAI's Whisper API (feedbacks on having more live demo session during lecture - I hear you!)
   
   </div>
   
@@ -140,10 +140,76 @@
   </ul>
 </div>
 
+  <div>
+To start with:
+  <p>1. Do you have <a href="https://code.visualstudio.com/">VSCode</a> installed? </p> 
+  <p>2. Do you have <a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">Live Server</a> installed in VSCode? Follow me if not! You can installed it from within the VSCode!</p>
+  <p>3. Do you have a <a href="https://platform.openai.com/">OpenAI API Platform</a> account? Not exactly the same as your usual ChatGPT account so you might need to go through the registration process again, I used my Google account for this one.</p>
+</div>
 
+    <div>
+Step 1
+  <p>Download the source code <a href="https://moodle.arts.ac.uk/mod/resource/view.php?id=1556476">here</a>! </p> 
+  <p>- Make a folder on your desktop for contents from this unit, if you have not downe so</p>
+  <p>- Put the downlaoded zip file into that folder and unzip it!</p>
+</div>
 
+      <div>
+Step 2
+  <p> Open VSCode -> Under File -> Open Folder </p> 
+  <p> - Select the folder you just unzipped - "whisper-web-app" </p>
+</div>
 
-<div>Congrats!!! Let's move from Speech-to-Text to Text-to-Speech</div>
+        <div>
+Step 3
+  <p> Have you seen the "Go Live" at the bottom bar? Click on it! </p> 
+  <p> - A web page should pop up in your default browser! </p>
+</div>
+
+          <div>
+Step 4
+  <p> Choose an audio file! and click "transcribe" </p> 
+  <p> - what happend? </p>
+</div>
+
+            <div>
+Step 5
+  <p> Back to the code, line 18 in the index.html </p> 
+  <p> - this is where we need to paste in our OpenAI API Key! </p>
+  <p> - WARNING! NEVER PUBLISH YOUR OpenAI API KEY on the internet! </p>
+   <p> - <a href="https://platform.openai.com/settings/organization/api-keys">Where to create API key?</a>   </p>
+</div>
+
+              <div>
+Step 6
+  <p> Create a API Key and paste that into your code! I'll demo! </p> 
+</div>
+
+                <div>
+Step 7
+  <p> OOOPS? No allowance? Use my key! </p> 
+</div>
+
+                  <div>
+🥳Now it's working!!!
+</div>
+
+              <div>
+A bit explaination on the code:
+  <p> The "file" Line 21 is what holds the audio file we upload. </p> 
+  <p> Line 30-34 is the API request we send to OpenAI </p>
+  <p>  The "data" in line 36 is what holds the response from OpenAI </p>
+   <p> Line 36 is what holds the response from OpenAI. </p>
+   <p> Line 37 displays the response. </p>
+</div>
+
+<div>Congrats!!!We just made a quick web APP for using OpenAI's API!🎉 
+ <p> Can you do more using other OpenAI's API? Of course! </p> 
+<p> Here's the <a href="https://platform.openai.com/docs/models">list</a> of pre-trained models (including the models behind ChatGPT), from a wide range of applications you can use in their API. </p> 
+  
+</div>
+
+  <div> 👏Let's move from Speech-to-Text to Text-to-Speech</div>
 
 
 <div>
@@ -213,15 +279,15 @@
 <div>
   <h3>Zero-Shot Voice Cloning</h3>
   <p>Modern systems can mimic voices without retraining.</p>
-  <p>Example: OpenAI's Voice Engine and Microsoft’s VALL-E.</p>
-  <p>They use embeddings learned from massive speaker datasets.</p>
+  <p>- Example: OpenAI's Voice Engine and Microsoft’s VALL-E.</p>
+  <p>- - They use embeddings learned from massive speaker datasets.</p>
 </div>
 
 
 <div>
   <h3>Ethical and Security Concerns</h3>
   <p>Voice deepfakes raise issues in consent, fraud, and misinformation.</p>
-  <p>Solutions: watermarking, detection models, and voice authenticity verification.</p>
+  <p>- Solutions: watermarking, detection models, and voice authenticity verification.</p>
 </div>
 
 
@@ -258,6 +324,8 @@
    <br />
     - Using the STT APP we built in-class as a starting point, build a web app that include TTS APIs, e.g. <a href="https://platform.openai.com/docs/guides/text-to-speech">OpenAI's TTS API endpoint</a> 
    <br />
+    - If you does not have allowance on your account, send me a message and I'll send you my API keys!
+  <br />
     - SEND ME your dev note by next Monday!
   </div>
 
@@ -265,13 +333,17 @@
     🕶️ What we have learnt today:
       <br />
    Industry-level AI models for speech processing in
+     <br />
     - Speech-to-Text
     <br />
     - Text-to-Speech, test with deployed model on hugging face!
     <br />
     - Voice Clone, test with deployed model on hugging face!
     <br />
-    - Build in class a demo web app with OpenAI Whisper API!
+    - Hands-on practice on using OpenAI's API in your web app 
+      <br />
+     (we built in class a demo web app today with OpenAI API for the Whisper model!)
+
   </div>
   
   <div> 
