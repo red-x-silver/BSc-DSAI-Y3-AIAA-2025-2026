@@ -105,6 +105,12 @@
   <p>- End-to-end training replaces hand-crafted pipelines.</p>
   <p>- End-to-end: using audio/audio features as input to directly predict into the text output, instead of going through the intermediate steps of phonemes, words, grammar. </p>
 </div>
+  
+  <div>
+  <h3>From Speech-to-Text to Understanding</h3>
+  <p>Once we have transcribed text, NLP models can analyze meaning.</p>
+  <p>Combining ASR (Automatic Speech Recognition) + LLMs → speech understanding.</p>
+</div>
 
   <div>
   <h3>SOTA, industry-level STT models include: </h3>  
@@ -135,13 +141,9 @@
 </div>
 
 
-<div>
-  <h3>From Speech-to-Text to Understanding</h3>
-  <p>Once we have transcribed text, NLP models can analyze meaning.</p>
-  <p>Combining ASR (Automatic Speech Recognition) + LLMs → speech understanding.</p>
-</div>
 
-<div>Move from Speech-to-Text, to Text-to-Speech</div>
+
+<div>Congrats!!! Let's move from Speech-to-Text to Text-to-Speech</div>
 
 
 <div>
@@ -163,7 +165,7 @@
 <div>
   <h3>Neural TTS Models</h3>
   <p>Traditional: Concatenative or parametric synthesis.</p>
-  <p>Modern: Neural TTS using deep learning (Tacotron, FastSpeech, VITS).</p>
+  <p>Modern: using deep neural networks.</p>
   <p>Produces human-like intonation and voice quality.</p>
 </div>
 
@@ -190,6 +192,7 @@
   <h3>Voice Cloning</h3>
   <p>Voice cloning aims to replicate a specific person’s voice.</p>
   <p>Uses a few seconds of target voice to adapt a TTS model.</p>
+   <p>It is an application that is built on top of TTS!</p>
   <p>Applications: personalization, dubbing, accessibility — and ethical concerns.</p>
 </div>
 
@@ -226,18 +229,6 @@
   </ul>
 </div>
 
-
-<div>
-  <h3>Practical Component</h3>
-  <p>We’ll build a simple web app using OpenAI Whisper API:</p>
-  <ul>
-    <li>Frontend for audio upload</li>
-    <li>Backend calling the API</li>
-    <li>Display transcription results</li>
-  </ul>
-</div>
-
-
 <div>
   <h3>Beyond Whisper: Multimodal Speech AI</h3>
   <p>Future direction: combining speech, vision, and text for richer context.</p>
@@ -258,36 +249,33 @@
 
 <div>
   <h3>Next Steps</h3>
-  <p>Explore Whisper API in code.</p>
-  <p>Experiment with TTS models (e.g., ElevenLabs, VITS).</p>
-  <p>Discuss ethical implications of synthetic voices.</p>
+  <p>- Explore Whisper API in code.</p>
+  <p>- Experiment with TTS models (e.g., ElevenLabs, VITS).</p>
+  <p>- Discuss ethical implications of synthetic voices.</p>
 </div>  
 
   <div> 
     Homework:
    <br />
-    - Inference <a href="https://github.com/NVlabs/stylegan3">StyleGAN3</a> or <a href="https://github.com/NVlabs/stylegan2">StyleGAN2</a> (choose one or more pre-trained models from the repos) on your laptop or workstation
+    - <a href="https://github.com/NVlabs/stylegan3">StyleGAN3</a> or <a href="https://github.com/NVlabs/stylegan2">StyleGAN2</a> 
    <br />
-    - Train a <a href="https://github.com/red-x-silver/PokeGAN">Pokemon GAN</a> on your laptop or the workstation. Show me your pokemons!
+    - Train a <a href="https://github.com/red-x-silver/PokeGAN">Pokemon GAN</a> 
    <br />
-     - Inference a stable diffusion model from your laptop with the <a href="https://huggingface.co/docs/diffusers/main/en/api/pipelines/stable_diffusion/overview">hugging face library for stable diffusions</a>, it is SO HANDY!
-    <br />
     - SEND ME your dev note by next Monday!
-    <br />
-    - [Optional but highly rewarding] Train a StyleGANX on the workstation, using a custom dataset (think of an applicatin that is interesting to you!).
+
   </div>
 
    <div> 
     🕶️ What we have learnt today:
       <br />
-   Three types of model family for generating images:
-    - VAE
+   Industry-level AI models for speech processing in
+    - Speech-to-Text
     <br />
-    - GAN
+    - Text-to-Speech
     <br />
-    - Diffusion
+    - Voice Clone
     <br />
-    - Inspect and inference examples of industry-level generative model: StyleGAN, Stable Diffusion
+    - Build in class a demo web app with OpenAI Whisper API!
   </div>
   
   <div> 
