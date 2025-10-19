@@ -41,18 +41,18 @@
   
      <br /> The theoretical: 
      <br /> - Introduction to speech-to-text models
-     <br /> - Introduction to text-to-speech synthesis models
+     <br /> - Introduction to text-to-speech models
      <br />  - Introduction to voice clone applications
     
      <br /> The practical: 
-     <br /> - build a Web App that uses OpenAI's Whisper API (feedbacks on having more live demo session during lecture - I hear you!)
+     <br /> - build a web App that uses OpenAI's Whisper API (feedbacks on having more live demo session during the lecture - I hear you!)
   
   </div>
   
   <div> First of all, don't forget to confirm your attendence on <a href="https://www.arts.ac.uk/study-at-ual/course-regulations/attendance-policy/attendance-monitoring"> SEAtS App!  </a></div>
 
    <div>
- Today we move from computer vision to the audio domain!
+ 🎤 Today we move from computer vision to the audio domain!
      <br /> - Audio ≠ just sound — it can be speech, music, environment sound, ambient noise, bird singing, etc
       <br /> - and for today we'll zoom into the realm of speech!
      
@@ -60,9 +60,9 @@
     
   <div>
   <h2>🎤SPEECH!🎤</h2>
-  <p>Speech is one of the most natural human communication forms.</p>
-  <p>It carries linguistic content, emotion, and identity etc.</p>
-  <p>AI application in speech aims to make computers understand and produce human speech naturally.</p>
+  <p>- Speech is one of the most natural human communication forms.</p>
+  <p>- It carries linguistic content, emotion, and identity etc.</p>
+  <p>- AI application in speech aims to make computers understand and produce human speech naturally.</p>
 </div>
 
 
@@ -143,7 +143,7 @@
   <div>
 To start with:
   <p>1. Do you have <a href="https://code.visualstudio.com/">VSCode</a> installed? </p> 
-  <p>2. Do you have <a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">Live Server</a> installed in VSCode? Follow me if not! You can installed it from within the VSCode!</p>
+  <p>2. Do you have <a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">Live Server</a> installed in VSCode? Follow me if not! You can install it from within the VSCode!</p>
   <p>3. Do you have a <a href="https://platform.openai.com/">OpenAI API Platform</a> account? Not exactly the same as your usual ChatGPT account so you might need to go through the registration process again, I used my Google account for this one.</p>
 </div>
 
@@ -176,13 +176,14 @@ Step 4
 Step 5
   <p> Back to the code, line 18 in the index.html </p> 
   <p> - this is where we need to paste in our OpenAI API Key! </p>
+   <p> - <a href="https://platform.openai.com/settings/organization/api-keys">Where to create an OpenAI API key?</a> </p>
   <p> - WARNING! NEVER PUBLISH YOUR OpenAI API KEY on the internet! </p>
-   <p> - <a href="https://platform.openai.com/settings/organization/api-keys">Where to create API key?</a>   </p>
+  
 </div>
 
               <div>
 Step 6
-  <p> Create a API Key and paste that into your code! I'll demo! </p> 
+  <p> Create an API Key and paste that into your code! I'll demo! </p> 
 </div>
 
                 <div>
@@ -196,11 +197,11 @@ Step 7
 
               <div>
 A bit explaination on the code:
-  <p> The "file" Line 21 is what holds the audio file we upload. </p> 
-  <p> Line 30-34 is the API request we send to OpenAI </p>
-  <p>  The "data" in line 36 is what holds the response from OpenAI </p>
-   <p> Line 36 is what holds the response from OpenAI. </p>
-   <p> Line 37 displays the response. </p>
+  <p> - The "file" Line 21 is what holds the audio file we upload. </p> 
+  <p> - Line 30-34 is the API request we send to OpenAI </p>
+  <p> - The "data" in line 36 is what holds the response from OpenAI </p>
+   <p>- Line 36 is what holds the response from OpenAI. </p>
+   <p>- Line 37 displays the response. </p>
 </div>
 
 <div>Congrats!!!We just made a quick web APP for using OpenAI's API!🎉 
@@ -237,7 +238,7 @@ A bit explaination on the code:
 
   <div>
   <h3>SOTA, industry-level STT models include: </h3>  
-  <p>- <a href="https://platform.openai.com/docs/guides/text-to-speech">gpt TTS models by OpenAI</a></p>    
+  <p>- <a href="https://platform.openai.com/docs/guides/text-to-speech">TTS models by OpenAI</a></p>    
   <p>- <a href="https://github.com/resemble-ai/chatterbox">Chatterbox by Resemble AI </a></p>
   <p>- <a href="https://huggingface.co/microsoft/VibeVoice-1.5B">VibeVoice by Microsoft</a></p>
   <p>- <a href="https://docs.coqui.ai/en/latest/index.html">TTS models from Coqui.ai</a> </p>
@@ -254,10 +255,10 @@ A bit explaination on the code:
 
 <div>
   <h3>Voice Cloning</h3>
-  <p>Voice cloning aims to replicate a specific person’s voice.</p>
-  <p>Uses a few seconds of target voice to adapt a TTS model.</p>
-   <p>It is an application that is built on top of TTS!</p>
-  <p>Applications: personalization, dubbing, accessibility — and ethical concerns.</p>
+  <p>- Voice cloning aims to replicate a specific person’s voice.</p>
+  <p>- Uses a few seconds of target voice to adapt a TTS model.</p>
+   <p>- It is an application that is built on top of TTS!</p>
+  <p>- Applications: personalization, dubbing, accessibility — and ethical concerns.</p>
 </div>
 
   <div>
@@ -292,17 +293,17 @@ A bit explaination on the code:
 
 
 <div>
-  <h3>Bringing It All Together</h3>
+  <h3>🤗Bringing It All Together</h3>
   <p>Speech-to-Text + Text-to-Speech enables:</p>
   <ul>
     <li>Conversational AI</li>
-    <li>Real-time translation</li>
+    <li>Combined with a text-to-text translation model, it can make real-time AUDIO translation</li>
     <li>Accessibility tools</li>
   </ul>
 </div>
 
 <div>
-  <h3>Future direction: </h3>
+  <h3>🕶️Future direction: </h3>
   <p>combining speech, vision, and text for richer context.</p>
   <p>Example: multimodal assistants that see, hear, and talk.</p>
 </div>
