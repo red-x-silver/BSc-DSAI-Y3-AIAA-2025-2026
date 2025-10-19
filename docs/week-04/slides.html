@@ -32,7 +32,7 @@
     <br />
     Lecture 04
     <br />
-    AI applications in the audio domain 👁️  
+    AI applications in the audio domain 🎤   
   </div>
     
   <div>Welcome 👩‍🎤🧑‍🎤👨‍🎤</div>
@@ -51,6 +51,13 @@
   
   <div> First of all, don't forget to confirm your attendence on <a href="https://www.arts.ac.uk/study-at-ual/course-regulations/attendance-policy/attendance-monitoring"> SEAtS App!  </a></div>
 
+   <div>
+ Today we move from computer vision to the audio domain!
+     <br /> - Audio ≠ just sound — it can be speech, music, environment sound, ambient noise, bird singing, etc
+      <br /> - and for today we'll zoom into the realm of speech!
+     
+</div>
+    
   <div>
   <h2>🎤SPEECH!🎤</h2>
   <p>Speech is one of the most natural human communication forms.</p>
@@ -58,56 +65,60 @@
   <p>AI application in speech aims to make computers understand and produce human speech naturally.</p>
 </div>
 
-<div>
-  <h3>Speech as an audio modality</h3>
-  <p>Audio ≠ just sound — it can be speech, music, environment sound, ambient noise, bird singing, etc </p>
-  <p>Speech is structured sound carrying semantic meaning.</p>
-  <p>AI models can be used to extract linguistic and paralinguistic information from it.</p>
-</div>
+
 
 
 <div>
   <h3>What applications can AI models do with speech? </h3>
   <p>Key applications include:</p>
   <ul>
-    <li>Speech-to-text transcription, also called Automatic Speech Recognition)</li>
+    <li>Speech-to-text transcription, also called Automatic Speech Recognition</li>
     <li>Text-to-speech synthesis</li>
     <li>Voice Cloning </li>
     <li>Speech Translation </li>
-    <li>Emotion Analysis (to be covered lec 08) </li>
+    <li>Emotion Analysis (to be covered in week 08) </li>
   </ul>
 </div>
 
 
 <div>
-  <h3>Speech-to-text transcription</h3>
-  <p>Transforms spoken language into written text.</p>
-  <p>Used in transcription, voice assistants, meeting notes, accessibility tools.</p>
+  <h3>Speech-to-text models</h3>
+  <p>- Transforms spoken language into written text.</p>
+  <p>- Used in transcription, voice assistants, meeting notes, accessibility tools.</p>
+  <p>- also called Speech Recognition models </p>
 </div>
 
 
 <div>
-  <h3>How STT Works</h3>
-  <p>1. Audio signal processing → extract features (MFCCs, spectrograms)</p>
-  <p>2. Acoustic model → map sounds to phonemes</p>
+  <h3>How STT Works - the traditional way </h3>
+  <p>1. Audio signal processing → extract features (MFCCs, spectrograms, more on these later)</p>
+  <p>2. Acoustic model → map sounds to phonemes </p>
   <p>3. Language model → predict words and grammar</p>
   <p>4. Decoder → generate text output</p>
+  <p> - Traditional models used HMM + GMM.</p>
 </div>
 
 
 <div>
-  <h3>Deep Learning for STT</h3>
-  <p>Traditional models used HMM + GMM.</p>
-  <p>Modern systems use deep neural networks (CNNs, RNNs, Transformers).</p>
-  <p>End-to-end training replaces hand-crafted pipelines.</p>
+  <h3>How STT Works - the state-of-the-art way</h3>  
+  <p>- Modern systems use deep neural networks (CNNs, RNNs, Transformers).</p>
+  <p>- End-to-end training replaces hand-crafted pipelines.</p>
+  <p>- End-to-end: using audio/audio features as input to directly predict into the text output, instead of going through the intermediate steps of phonemes, words, grammar. </p>
 </div>
 
-
+  <div>
+  <h3>SOTA, industry-level STT models include: </h3>  
+  <p>- <a href="https://openai.com/index/whisper/">Whisper by OpenAI</a> </p>
+  <p>- <a href="https://huggingface.co/nvidia/canary-1b">Canary 1B by NVIDIA </a></p>
+  <p>- <a href="https://github.com/modelscope/FunASR">FunASR</a></p>
+</div>
+  
 <div>
   <h3>Whisper by OpenAI</h3>
-  <p>Whisper is an open multilingual speech recognition model.</p>
-  <p>Trained on 680k hours of diverse data.</p>
-  <p>Robust to accents, noise, and technical vocabulary.</p>
+  <p>- Whisper is an open multilingual speech recognition model.</p>
+  <p>- Trained on 680k hours of diverse data.</p>
+  <p>- It enjoys a sequence-to-sequence Transformer architecture.</p>
+  <p>- Quite robust to accents, noise, and technical vocabulary.</p>
 </div>
 
 
@@ -118,6 +129,7 @@
   <ul>
     <li>Uploads an audio file</li>
     <li>Calls Whisper API</li>
+    <li>Receives the transcription response </li>
     <li>Displays transcription</li>
   </ul>
 </div>
@@ -129,20 +141,22 @@
   <p>Combining ASR (Automatic Speech Recognition) + LLMs → speech understanding.</p>
 </div>
 
+<div>Move from Speech-to-Text, to Text-to-Speech</div>
+
 
 <div>
   <h3>Text-to-Speech (TTS)</h3>
-  <p>Converts text input into natural-sounding speech.</p>
-  <p>Used in assistants (Siri, Alexa), audiobooks, accessibility tools, etc.</p>
+  <p>Converts text input into natural-sounding speech, and speech is in the audio domain.</p>
+  <p>Used in audio agent (Siri, Alexa), audiobooks, accessibility tools, etc.</p>
 </div>
 
 
 <div>
   <h3>How TTS Works</h3>
   <p>1. Text analysis → normalize text, expand numbers, detect punctuation.</p>
-  <p>2. Linguistic features → phonemes, prosody, and stress patterns.</p>
+  <p>2. Linguistic features → phonemes, prosody patterns.</p>
   <p>3. Acoustic model → predict mel-spectrogram.</p>
-  <p>4. Vocoder → generate waveform (sound) from spectrogram.</p>
+  <p>4. Vocoder → generate audio waveform from spectrogram.</p>
 </div>
 
 
