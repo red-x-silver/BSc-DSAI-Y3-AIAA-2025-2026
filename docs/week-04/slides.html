@@ -169,23 +169,21 @@
   <p>Produces human-like intonation and voice quality.</p>
 </div>
 
+  <div>
+  <h3>SOTA, industry-level STT models include: </h3>  
+  <p>- <a href="https://platform.openai.com/docs/guides/text-to-speech">gpt TTS models by OpenAI</a></p>    
+  <p>- <a href="https://github.com/resemble-ai/chatterbox">Chatterbox by Resemble AI </a></p>
+  <p>- <a href="https://huggingface.co/microsoft/VibeVoice-1.5B">VibeVoice by Microsoft</a></p>
+  <p>- <a href="https://docs.coqui.ai/en/latest/index.html">TTS models from Coqui.ai</a> </p>
 
+</div>
+  
 <div>
-  <h3>Tacotron 2 Example</h3>
-  <p>Google's Tacotron 2 uses sequence-to-sequence models:</p>
-  <ul>
-    <li>Encoder: processes text (characters/phonemes)</li>
-    <li>Decoder: predicts mel-spectrogram frames</li>
-    <li>Vocoder: (e.g., WaveGlow) generates audio</li>
-  </ul>
+  TTS demos on Hugging Face Spaces
+  <p>- <a href="https://huggingface.co/spaces/hexgrad/Kokoro-TTS">Kokoro-TTS</a></p>
+
 </div>
 
-
-<div>
-  <h3>Recent Advancements: VITS</h3>
-  <p>VITS combines TTS and vocoder into a single end-to-end model.</p>
-  <p>It’s fast, expressive, and can generate high-quality voices.</p>
-</div>
 
 
 <div>
@@ -196,6 +194,14 @@
   <p>Applications: personalization, dubbing, accessibility — and ethical concerns.</p>
 </div>
 
+  <div>
+  <h3>Voice Cloning</h3>
+  <p>Let's play with <a href="https://huggingface.co/spaces/tonyassi/voice-clone">this fun voice cloning demo app on Hugging Face!</a>  </p>
+  <p>I scraped <a href="https://en.wikipedia.org/wiki/Nagato_(Naruto)">Pain(from Naruto)</a>'s voice for this... </p>
+</div>
+
+  
+  
 <div>
   <h3>Mechanism of Voice Cloning</h3>
   <p>1. Speaker embedding extraction from sample audio.</p>
@@ -230,8 +236,8 @@
 </div>
 
 <div>
-  <h3>Beyond Whisper: Multimodal Speech AI</h3>
-  <p>Future direction: combining speech, vision, and text for richer context.</p>
+  <h3>Future direction: </h3>
+  <p>combining speech, vision, and text for richer context.</p>
   <p>Example: multimodal assistants that see, hear, and talk.</p>
 </div>
 
@@ -239,30 +245,20 @@
 <div>
   <h3>Summary</h3>
   <ul>
-    <li>Speech is a key AI modality.</li>
+    <li>AI in speech processing mainly include STT and TTS.</li>
     <li>STT enables machines to listen.</li>
     <li>TTS enables machines to speak.</li>
-    <li>Voice cloning personalizes interaction.</li>
+    <li>Voice cloning is built on top of TTS and it personalizes interaction.</li>
   </ul>
 </div>
 
 
-<div>
-  <h3>Next Steps</h3>
-  <p>- Explore Whisper API in code.</p>
-  <p>- Experiment with TTS models (e.g., ElevenLabs, VITS).</p>
-  <p>- Discuss ethical implications of synthetic voices.</p>
-</div>  
-
   <div> 
     Homework:
    <br />
-    - <a href="https://github.com/NVlabs/stylegan3">StyleGAN3</a> or <a href="https://github.com/NVlabs/stylegan2">StyleGAN2</a> 
-   <br />
-    - Train a <a href="https://github.com/red-x-silver/PokeGAN">Pokemon GAN</a> 
+    - Using the STT APP we built in-class as a starting point, build a web app that include TTS APIs, e.g. <a href="https://platform.openai.com/docs/guides/text-to-speech">OpenAI's TTS API endpoint</a> 
    <br />
     - SEND ME your dev note by next Monday!
-
   </div>
 
    <div> 
@@ -271,9 +267,9 @@
    Industry-level AI models for speech processing in
     - Speech-to-Text
     <br />
-    - Text-to-Speech
+    - Text-to-Speech, test with deployed model on hugging face!
     <br />
-    - Voice Clone
+    - Voice Clone, test with deployed model on hugging face!
     <br />
     - Build in class a demo web app with OpenAI Whisper API!
   </div>
