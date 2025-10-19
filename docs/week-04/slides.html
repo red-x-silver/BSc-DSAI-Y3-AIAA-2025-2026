@@ -58,7 +58,196 @@
   <p>AI application in speech aims to make computers understand and produce human speech naturally.</p>
 </div>
 
-  
+<div>
+  <h3>Speech as an audio modality</h3>
+  <p>Audio ≠ just sound — it can be speech, music, environment sound, ambient noise, bird singing, etc </p>
+  <p>Speech is structured sound carrying semantic meaning.</p>
+  <p>AI models can be used to extract linguistic and paralinguistic information from it.</p>
+</div>
+
+
+<div>
+  <h3>What applications can AI models do with speech? </h3>
+  <p>Key applications include:</p>
+  <ul>
+    <li>Speech-to-text transcription, also called Automatic Speech Recognition)</li>
+    <li>Text-to-speech synthesis</li>
+    <li>Voice Cloning </li>
+    <li>Speech Translation </li>
+    <li>Emotion Analysis (to be covered lec 08) </li>
+  </ul>
+</div>
+
+
+<div>
+  <h3>Speech-to-text transcription</h3>
+  <p>Transforms spoken language into written text.</p>
+  <p>Used in transcription, voice assistants, meeting notes, accessibility tools.</p>
+</div>
+
+
+<div>
+  <h3>How STT Works</h3>
+  <p>1. Audio signal processing → extract features (MFCCs, spectrograms)</p>
+  <p>2. Acoustic model → map sounds to phonemes</p>
+  <p>3. Language model → predict words and grammar</p>
+  <p>4. Decoder → generate text output</p>
+</div>
+
+
+<div>
+  <h3>Deep Learning for STT</h3>
+  <p>Traditional models used HMM + GMM.</p>
+  <p>Modern systems use deep neural networks (CNNs, RNNs, Transformers).</p>
+  <p>End-to-end training replaces hand-crafted pipelines.</p>
+</div>
+
+
+<div>
+  <h3>Whisper by OpenAI</h3>
+  <p>Whisper is an open multilingual speech recognition model.</p>
+  <p>Trained on 680k hours of diverse data.</p>
+  <p>Robust to accents, noise, and technical vocabulary.</p>
+</div>
+
+
+<div>
+  <h3>Practical: Using Whisper API</h3>
+  <p>Whisper API can transcribe audio to text in seconds.</p>
+  <p>We'll build a simple web app that:</p>
+  <ul>
+    <li>Uploads an audio file</li>
+    <li>Calls Whisper API</li>
+    <li>Displays transcription</li>
+  </ul>
+</div>
+
+
+<div>
+  <h3>From Speech-to-Text to Understanding</h3>
+  <p>Once we have transcribed text, NLP models can analyze meaning.</p>
+  <p>Combining ASR (Automatic Speech Recognition) + LLMs → speech understanding.</p>
+</div>
+
+
+<div>
+  <h3>Text-to-Speech (TTS)</h3>
+  <p>Converts text input into natural-sounding speech.</p>
+  <p>Used in assistants (Siri, Alexa), audiobooks, accessibility tools, etc.</p>
+</div>
+
+
+<div>
+  <h3>How TTS Works</h3>
+  <p>1. Text analysis → normalize text, expand numbers, detect punctuation.</p>
+  <p>2. Linguistic features → phonemes, prosody, and stress patterns.</p>
+  <p>3. Acoustic model → predict mel-spectrogram.</p>
+  <p>4. Vocoder → generate waveform (sound) from spectrogram.</p>
+</div>
+
+
+<div>
+  <h3>Neural TTS Models</h3>
+  <p>Traditional: Concatenative or parametric synthesis.</p>
+  <p>Modern: Neural TTS using deep learning (Tacotron, FastSpeech, VITS).</p>
+  <p>Produces human-like intonation and voice quality.</p>
+</div>
+
+
+<div>
+  <h3>Tacotron 2 Example</h3>
+  <p>Google's Tacotron 2 uses sequence-to-sequence models:</p>
+  <ul>
+    <li>Encoder: processes text (characters/phonemes)</li>
+    <li>Decoder: predicts mel-spectrogram frames</li>
+    <li>Vocoder: (e.g., WaveGlow) generates audio</li>
+  </ul>
+</div>
+
+
+<div>
+  <h3>Recent Advancements: VITS</h3>
+  <p>VITS combines TTS and vocoder into a single end-to-end model.</p>
+  <p>It’s fast, expressive, and can generate high-quality voices.</p>
+</div>
+
+
+<div>
+  <h3>Voice Cloning</h3>
+  <p>Voice cloning aims to replicate a specific person’s voice.</p>
+  <p>Uses a few seconds of target voice to adapt a TTS model.</p>
+  <p>Applications: personalization, dubbing, accessibility — and ethical concerns.</p>
+</div>
+
+<div>
+  <h3>Mechanism of Voice Cloning</h3>
+  <p>1. Speaker embedding extraction from sample audio.</p>
+  <p>2. Conditioning the TTS model on this embedding.</p>
+  <p>3. Model generates speech in the target voice.</p>
+</div>
+
+
+<div>
+  <h3>Zero-Shot Voice Cloning</h3>
+  <p>Modern systems can mimic voices without retraining.</p>
+  <p>Example: OpenAI's Voice Engine and Microsoft’s VALL-E.</p>
+  <p>They use embeddings learned from massive speaker datasets.</p>
+</div>
+
+
+<div>
+  <h3>Ethical and Security Concerns</h3>
+  <p>Voice deepfakes raise issues in consent, fraud, and misinformation.</p>
+  <p>Solutions: watermarking, detection models, and voice authenticity verification.</p>
+</div>
+
+
+<div>
+  <h3>Bringing It All Together</h3>
+  <p>Speech-to-Text + Text-to-Speech enables:</p>
+  <ul>
+    <li>Conversational AI</li>
+    <li>Real-time translation</li>
+    <li>Accessibility tools</li>
+  </ul>
+</div>
+
+
+<div>
+  <h3>Practical Component</h3>
+  <p>We’ll build a simple web app using OpenAI Whisper API:</p>
+  <ul>
+    <li>Frontend for audio upload</li>
+    <li>Backend calling the API</li>
+    <li>Display transcription results</li>
+  </ul>
+</div>
+
+
+<div>
+  <h3>Beyond Whisper: Multimodal Speech AI</h3>
+  <p>Future direction: combining speech, vision, and text for richer context.</p>
+  <p>Example: multimodal assistants that see, hear, and talk.</p>
+</div>
+
+
+<div>
+  <h3>Summary</h3>
+  <ul>
+    <li>Speech is a key AI modality.</li>
+    <li>STT enables machines to listen.</li>
+    <li>TTS enables machines to speak.</li>
+    <li>Voice cloning personalizes interaction.</li>
+  </ul>
+</div>
+
+
+<div>
+  <h3>Next Steps</h3>
+  <p>Explore Whisper API in code.</p>
+  <p>Experiment with TTS models (e.g., ElevenLabs, VITS).</p>
+  <p>Discuss ethical implications of synthetic voices.</p>
+</div>  
 
   <div> 
     Homework:
