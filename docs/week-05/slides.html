@@ -96,6 +96,7 @@
 <div>
   <h3>Visualizing a Waveform</h3>
   <p>We can plot the waveform as amplitude vs time to observe loudness and shape.</p>
+ <p> - hands-on practice later</p>
 </div>
 
 
@@ -104,24 +105,29 @@
   <ul>
     <li>High dimensional (many samples per second)</li>
     <li>Hard to interpret directly - what can we read from amplitudes seperated apart by 1/44100th second? </li>
-    <li> - It does not explicitly show interpretable information such as the frequency content.</li>
+    <li> It does not explicitly show interpretable information such as the frequency content.</li>
   </ul>
 </div>
 
+<div>
 
+  <p> From raw waveform to spectrograms!</p>
+
+</div>
+  
 <div>
   <h3>Time vs Frequency Domain</h3>
-  <p>The waveform is the time-domain audio representation.</p>
-  <p>Audio can also be described in terms of its frequency component (pitch content).</p>
-  <p>We use transformations (like the Fourier Transform) to move from time to time-frequency domain. (no worries about understanding the technical details here!)</p>
+  <p>- The waveform is the time-domain audio representation.</p>
+  <p>- Audio can also be described in terms of its frequency component.</p>
+  <p>- We use transformations (like the Fourier Transform) to move from time to time-frequency domain. (no worries about understanding the technical details here!)</p>
 </div>
 
 
 <div>
   <h3>Fourier Transform</h3>
-  <p>Decomposes a signal into a sum of sinusoids.</p>
-  <p>Shows which frequencies are present and their amplitudes.</p>
-  <p>Fast Fourier Transform (FFT) is the efficient version used in audio processing.</p>
+  <p>- Decomposes a signal into a sum of sinusoids.</p>
+  <p>- Shows which frequencies are present and their amplitudes.</p>
+  <p>- Fast Fourier Transform (FFT) is the efficient version used in audio processing.</p>
   <p>[optional] <a href="https://www.youtube.com/watch?v=spUNpyF58BY">A good YTB tutorial on Fourier Transform</a></p>
 </div>
 
@@ -155,7 +161,7 @@
 
 
 <div>
-  <h3><a href="https://huggingface.co/learn/audio-course/en/chapter1/audio_data">Log-Mel Spectrogram<</a>/h3>
+  <h3><a href="https://huggingface.co/learn/audio-course/en/chapter1/audio_data">Log-Mel Spectrogram</a></h3>
   <p>Logarithmic scaling of energy values (closer to how humans perceive loudness).</p>
   <p>Common input representation for deep audio models (e.g., <a href="https://openai.com/index/whisper/">Whisper from OpenAI</a>).</p>
 </div>
@@ -240,9 +246,14 @@
   
 </div>
 
+  
+<div>
+  <h3>Let me demonstrate how to create a python environment in VSCode!</h3>
+
+</div>
 
    <div>
-Python environment - Step 1
+ <h3>Python environment - Step 1</h3>
   <p> Create a python environment  </p> 
   <p>- different ways to do this as listed <a href=https://code.visualstudio.com/docs/python/environments">here</a> </p>
   <p>1. via VSCode command line </p>
@@ -250,7 +261,7 @@ Python environment - Step 1
 </div>
 
       <div>
-Python environment - Step 2
+ <h3>Python environment - Step 2</h3>
   <p> Don't forget to activate the environment you just created! </p> 
 
    <p>1. via VSCode command line: select python interpreter </p>
@@ -258,7 +269,7 @@ Python environment - Step 2
 </div>
 
         <div>
-Python environment - Step 3
+ <h3>Python environment - Step 3</h3>
   <p> Install the dependencies (libraries) with pip install/p> 
   <p> Have you seen "pip install XXX" before? </p>
 </div>
