@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <title>Artificial Intelligence and Advanced Analytics 05</title>
+  <!-- This whole presentation was made with Big: https://github.com/tmcw/big -->
+  
+  <link href="../big/big.css" rel="stylesheet" type="text/css" />
+  <script src="../big/big.js"></script>
+  <link href="../big/themes/lightWhite.css" rel="stylesheet" type="text/css" />
+
+  <!-- Favicon link below, via https://emojitofavicon.com -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%2210 0 100 100%22><text y=%22.90em%22 font-size=%2290%22>🍴</text></svg>"></link>
+  
+  <style>
+    body {
+      background-color: #EDDD6E;
+      font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, Ubuntu, roboto, noto, segoe ui, arial, sans-serif;
+      /* font-weight: 700;*/
+      margin: 0;
+      padding: 0;
+      font-style: normal;
+      font-size: 21px;
+    }
+  </style>
+  
+</head>
+<body>
+  <div>
+    AIAA👐
+    <br />
+    Lecture 05
+    <br />
+    Audio representation + AI applications in music 🥁 
+  </div>
+    
+  <div>Welcome 👩‍🎤🧑‍🎤👨‍🎤</div>
+  
+  <div> By the end of this lecture, we'll have learnt about:
+  
+     <br /> The theoretical: 
+     <br /> - Introduction to audio representations
+     <br /> - Introduction to AI applications in music
+    
+     <br /> The practical: 
+     <br /> - Use models from hugging face and test them on our machine (feedbacks on having more live demo session during the lecture - I hear you!)
+  
+  </div>
+  
+  <div> First of all, don't forget to confirm your attendence on <a href="https://www.arts.ac.uk/study-at-ual/course-regulations/attendance-policy/attendance-monitoring"> SEAtS App!  </a></div>
+
+   <div>
+ 🎤 Last week we have seen AI applications in the audio domain including Speech-to-Text, Text-to-Speech, and Voice Clone!
+      <br /> - Today we will go back to the basics first - what representation/features we can use as the input to neural networks and how to extract them from the raw waveform.
+     <br /> - Then we will move to apply AI in another beloved kind of audio - music!    
+</div>
+
+<div>
+  <h3>What is audio?</h3>
+  <p>Sound is the physical vibration that travels through a medium like air. </p>
+  <p>Audio refers to the electronic recording, transmission, or reproduction of that sound. </p>
+</div>
+
+  <div>
+  <h3>What is sound?</h3>
+  <p>Sound is the physical vibration that propagates through medium (e.g. air) as pressure waves.</p>
+  <p> - <a href="https://www.youtube.com/watch?v=QBYz82nS_xk">A YTB tutorial on sound</a>(DIY and well-made) </p>
+</div>
+
+
+<div>
+  <h3>Digital Audio Representation</h3>
+  <p>How can we use numbers to represent the continuous WAVE of sound? 🌊 </p>
+  <p>We sample it! 📝 </p>
+  <p>Sampling - the process of converting analog sound waves into a digital format by measuring the amplitude (loudness) of the sound wave at regular intervals. </p>
+   <p> - Just like taking notes at regular intervals when observing the wave📝 </p>
+  <p>Digital audio is a sequence of samples (numbers) representing the amplitude of sound over time.</p>
+  <p>Two main parameters for the sampling process:</p>
+  <ul>
+    <li><b>Sampling Rate (Hz):</b> how many samples per second (e.g., 44.1 kHz)</li>
+    <li><b>Bit Depth:</b> how many bits per sample (e.g., 16-bit = 65,536 levels)</li>
+  </ul>
+</div>
+
+
+<div>
+  <h3>Raw Waveform</h3>
+  <p>The waveform (the discrete sequence of samples in digital audio) is the most basic representation of audio.</p>
+  <p>It captures amplitude vs time.</p>
+  <p>Example: A 1-second 44.1 kHz mono clip = 44,100 numbers.</p>
+</div>
+
+
+<div>
+  <h3>Visualizing a Waveform</h3>
+  <p>We can plot the waveform as amplitude vs time to observe loudness and shape.</p>
+</div>
+
+
+<div>
+  <h3>Limitations of the Raw Waveform</h3>
+  <ul>
+    <li>High dimensional (many samples per second)</li>
+    <li>Hard to interpret directly - what can we read from amplitudes seperated apart by 1/44100th second? </li>
+    <li> - It does not explicitly show interpretable information such as the frequency content.</li>
+  </ul>
+</div>
+
+
+<div>
+  <h3>Time vs Frequency Domain</h3>
+  <p>The waveform is the time-domain audio representation.</p>
+  <p>Audio can also be described in terms of its frequency component (pitch content).</p>
+  <p>We use transformations (like the Fourier Transform) to move from time to time-frequency domain. (no worries about understanding the technical details here!)</p>
+</div>
+
+
+<div>
+  <h3>Fourier Transform</h3>
+  <p>Decomposes a signal into a sum of sinusoids.</p>
+  <p>Shows which frequencies are present and their amplitudes.</p>
+  <p>Fast Fourier Transform (FFT) is the efficient version used in audio processing.</p>
+  <p>[optional] <a href="https://www.youtube.com/watch?v=spUNpyF58BY">A good YTB tutorial on Fourier Transform</a></p>
+</div>
+
+
+<div>
+  <h3><a href="https://en.wikipedia.org/wiki/Spectrogram">Spectrogram</a></h3>
+  <p>A spectrogram shows how frequency content changes over time.</p>
+  <ul>
+    <li>x-axis: time</li>
+    <li>y-axis: frequency</li>
+    <li>color: amplitude or energy</li>
+  </ul>
+</div>
+
+
+<div>
+  <p>The technique behind extracting spectrogram from waveform: Short-Time Fourier Transform (STFT)</p>
+  <p>Audio is analyzed in short overlapping windows (frames).</p>
+  <p>Each window gives a spectrum → combined to form the spectrogram.</p>
+  <p>Provides both time and frequency resolution.</p>
+</div>
+
+
+<div>
+  <h3><a href="https://en.wikipedia.org/wiki/Mel_scale">Mel Scale</a></h3>
+  <p>Human perception of pitch is not linear.</p>
+  <p>The Mel scale compresses high frequencies to match human hearing sensitivity.</p>
+  <p>Mel Spectrogram = frequency in spectrogram bins mapped to Mel scale.</p>
+  
+</div>
+
+
+<div>
+  <h3><a href="https://huggingface.co/learn/audio-course/en/chapter1/audio_data">Log-Mel Spectrogram<</a>/h3>
+  <p>Logarithmic scaling of energy values (closer to how humans perceive loudness).</p>
+  <p>Common input representation for deep audio models (e.g., <a href="https://openai.com/index/whisper/">Whisper from OpenAI</a>).</p>
+</div>
+
+
+<div>
+  <h3><a href="https://learn.flucoma.org/reference/mfcc/">MFCCs</a> – Mel-Frequency Cepstral Coefficients</h3>
+  <p>Compact representation of the spectral envelope of sound.</p>
+  <p>Derived from log-mel spectrogram.</p>
+  <p>Widely used in speech recognition and speaker identification.</p>
+</div>
+
+
+<div>
+  <h3>Other Common Audio Features</h3>
+  <ul>
+    <li>Spectral Centroid – "brightness" of sound</li>
+    <li>Chroma Features – energy distribution across musical pitches</li>
+    <li>RMS Energy – perceived loudness</li>
+  </ul>
+</div>
+
+  <div>
+  <h3>Good NEWS!🥰 </h3>
+   <p>In practice, we use simple code from libraries to extract spectrograms, log-mel spectrograms, MFCCs, and more from audio files.</p>
+  <ul>
+    <li>Librosa </li>
+    <li>Torchaudio</li>
+    <li>Madmom</li>
+    <li>Essentia</li>
+    <li>etc.</li>
+  </ul>
+ 
+</div>
+
+
+
+<div>
+  <h3>From Features to Models</h3>
+  <p>Features become input to ML or DL models for tasks like:</p>
+  <ul>
+    <li>Speech recognition</li>
+    <li>Music genre classification</li>
+    <li>Emotion detection</li>
+  </ul>
+</div>
+
+<div>
+  <h3>Example: Audio Classification Pipeline for applications like <a href="https://birdnet.cornell.edu/">bird net</a> </h3>
+  <ul>
+    <li>Load raw audio waveform from an audio file</li>
+    <li>Extract Mel Spectrogram or MFCCs</li>
+    <li>Feed into CNN or Transformer</li>
+    <li>Predict label (e.g., “magpie”, “raven”, “blue jay”)</li>
+  </ul>
+</div>
+
+
+<div>
+  <h3>Going beyond: Deep Audio Embeddings</h3>
+  <p>Modern models (like OpenAI’s CLAP or AudioCLIP) learn embeddings directly from raw audio.</p>
+  <p>They map audio, text, and sometimes image data into a shared space.</p>
+</div>
+
+<div>
+  <h3>Summary</h3>
+  <ul>
+    <li>Raw waveform → time-domain data</li>
+    <li>Apply Fourier transformation to waveform to extract time-frequency-domain features</li>
+    <li> Spectrogram & >Log-Mel Spectrogram & MFCCs → perceptually meaningful representations</li>
+  </ul>
+</div>
+
+  
+
+  
+  <div>
+  <h2>Hands-on:  Audio representations〜🌊🌈</h2> 
+  <p> <a href="https://colab.research.google.com/github/iranroman/musicinformationretrieval.com/blob/gh-pages/audio_representation.ipynb">This colab notebook</a> for audio representation basics. </p>
+  <p> Raw waveform can be quite high-dimensional. Here are some features we can extract from digital audio: <a href="https://youtu.be/_FatxGN3vAM?si=lPmThVzn7IF6Kj-9">Spectrogram</a>, <a href="https://www.youtube.com/watch?v=4_SH2nfbQZ8">MFCC</a>, etc. They are 2D (temporal + spectral) representations for audio which are more compact than 1D waveform. </p>
+  <p>Commonly used Python libraries for handling audi presentation are Librosa, Madmom and torchaudio. </p>
+  
+</div>
+
+  <div>
+  <h3>Recommended learning resources</h3>
+    <p>The official tutorials from PyTorch for torchaudio: <a href=" https://docs.pytorch.org/tutorials/">select "Audio" from this page</a></p>
+  <p> Smooth learning curve from basics to applications: <a href="https://huggingface.co/learn/audio-course/chapter0/introduction">this Audio course on Hugging face</a> </p>
+  <p> To dive deeper:  <a href="https://musicinformationretrieval.com/">this web-page containing a series of colab notebooks</a>. </p>
+</div>
+
+
+
+
+
+<div>
+  <h3>Speech-to-text models</h3>
+  <p>- Transforms spoken language into written text.</p>
+  <p>- Used in transcription, voice assistants, meeting notes, accessibility tools.</p>
+  <p>- also called Speech Recognition models </p>
+</div>
+
+
+<div>
+  <h3>How STT Works - the traditional way </h3>
+  <p>1. Audio signal processing → extract features (MFCCs, spectrograms, more on these later)</p>
+  <p>2. Acoustic model → map sounds to phonemes </p>
+  <p>3. Language model → predict words and grammar</p>
+  <p>4. Decoder → generate text output</p>
+  <p> - Traditional models used HMM + GMM.</p>
+</div>
+
+
+<div>
+  <h3>How STT Works - the state-of-the-art way</h3>  
+  <p>- Modern systems use deep neural networks (CNNs, RNNs, Transformers).</p>
+  <p>- End-to-end training replaces hand-crafted pipelines.</p>
+  <p>- End-to-end: using audio/audio features as input to directly predict into the text output, instead of going through the intermediate steps of phonemes, words, grammar. </p>
+</div>
+  
+  <div>
+  <h3>From Speech-to-Text to Understanding</h3>
+  <p>Once we have transcribed text, NLP models can analyze meaning.</p>
+  <p>Combining ASR (Automatic Speech Recognition) + LLMs → speech understanding.</p>
+</div>
+
+  <div>
+  <h3>SOTA, industry-level STT models include: </h3>  
+  <p>- <a href="https://openai.com/index/whisper/">Whisper by OpenAI</a> </p>
+  <p>- <a href="https://huggingface.co/nvidia/canary-1b">Canary 1B by NVIDIA </a></p>
+  <p>- <a href="https://github.com/modelscope/FunASR">FunASR</a></p>
+</div>
+  
+<div>
+  <h3>Whisper by OpenAI</h3>
+  <p>- Whisper is an open multilingual speech recognition model.</p>
+  <p>- Trained on 680k hours of diverse data.</p>
+  <p>- It enjoys a sequence-to-sequence Transformer architecture.</p>
+  <p>- Quite robust to accents, noise, and technical vocabulary.</p>
+</div>
+
+
+<div>
+  <h3>Practical: Using Whisper API</h3>
+  <p>Whisper API can transcribe audio to text in seconds.</p>
+  <p>We'll build a simple web app that:</p>
+  <ul>
+    <li>Uploads an audio file</li>
+    <li>Calls Whisper API</li>
+    <li>Receives the transcription response </li>
+    <li>Displays transcription</li>
+  </ul>
+</div>
+
+  <div>
+To start with:
+  <p>1. Do you have <a href="https://code.visualstudio.com/">VSCode</a> installed? </p> 
+  <p>2. Do you have <a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">Live Server</a> installed in VSCode? Follow me if not! You can install it from within the VSCode!</p>
+  <p>3. Do you have a <a href="https://platform.openai.com/">OpenAI API Platform</a> account? Not exactly the same as your usual ChatGPT account so you might need to go through the registration process again, I used my Google account for this one.</p>
+</div>
+
+    <div>
+Step 1
+  <p>Download the source code <a href="https://moodle.arts.ac.uk/mod/resource/view.php?id=1556476">here</a>! </p> 
+  <p>- Make a folder on your desktop for contents from this unit, if you have not downe so</p>
+  <p>- Put the downlaoded zip file into that folder and unzip it!</p>
+</div>
+
+      <div>
+Step 2
+  <p> Open VSCode -> Under File -> Open Folder </p> 
+  <p> - Select the folder you just unzipped - "whisper-web-app" </p>
+</div>
+
+        <div>
+Step 3
+  <p> Have you seen the "Go Live" at the bottom bar? Click on it! </p> 
+  <p> - A web page should pop up in your default browser! </p>
+</div>
+
+          <div>
+Step 4
+  <p> Choose an audio file! and click "transcribe" </p> 
+  <p> - what happend? </p>
+</div>
+
+            <div>
+Step 5
+  <p> Back to the code, line 18 in the index.html </p> 
+  <p> - this is where we need to paste in our OpenAI API Key! </p>
+   <p> - <a href="https://platform.openai.com/settings/organization/api-keys">Where to create an OpenAI API key?</a> </p>
+  <p> - WARNING! NEVER PUBLISH YOUR OpenAI API KEY on the internet! </p>
+  
+</div>
+
+              <div>
+Step 6
+  <p> Create an API Key and paste that into your code! I'll demo! </p> 
+</div>
+
+                <div>
+Step 7
+  <p> OOOPS? No allowance? Use my key! </p> 
+</div>
+
+                  <div>
+🥳Now it's working!!!
+</div>
+
+              <div>
+A bit explaination on the code:
+  <p> - The "file" Line 21 is what holds the audio file we upload. </p> 
+  <p> - Line 30-34 is the API request we send to OpenAI </p>
+  <p> - The "data" in line 36 is what holds the response from OpenAI </p>
+   <p>- Line 36 is what holds the response from OpenAI. </p>
+   <p>- Line 37 displays the response. </p>
+</div>
+
+<div>Congrats!!!We just made a quick web APP for using OpenAI's API!🎉 
+ <p> Can you do more using other OpenAI's API? Of course! </p> 
+<p> Here's the <a href="https://platform.openai.com/docs/models">list</a> of pre-trained models (including the models behind ChatGPT), from a wide range of applications you can use in their API. </p> 
+  
+</div>
+
+  <div> 👏Let's move from Speech-to-Text to Text-to-Speech</div>
+
+
+<div>
+  <h3>Text-to-Speech (TTS)</h3>
+  <p>Converts text input into natural-sounding speech, and speech is in the audio domain.</p>
+  <p>Used in audio agent (Siri, Alexa), audiobooks, accessibility tools, etc.</p>
+</div>
+
+
+<div>
+  <h3>How TTS Works</h3>
+  <p>1. Text analysis → normalize text, expand numbers, detect punctuation.</p>
+  <p>2. Linguistic features → phonemes, prosody patterns.</p>
+  <p>3. Acoustic model → predict mel-spectrogram.</p>
+  <p>4. Vocoder → generate audio waveform from spectrogram.</p>
+</div>
+
+
+<div>
+  <h3>Neural TTS Models</h3>
+  <p>Traditional: Concatenative or parametric synthesis.</p>
+  <p>Modern: using deep neural networks.</p>
+  <p>Produces human-like intonation and voice quality.</p>
+</div>
+
+  <div>
+  <h3>SOTA, industry-level STT models include: </h3>  
+  <p>- <a href="https://platform.openai.com/docs/guides/text-to-speech">TTS models by OpenAI</a></p>    
+  <p>- <a href="https://github.com/resemble-ai/chatterbox">Chatterbox by Resemble AI </a></p>
+  <p>- <a href="https://huggingface.co/microsoft/VibeVoice-1.5B">VibeVoice by Microsoft</a></p>
+  <p>- <a href="https://docs.coqui.ai/en/latest/index.html">TTS models from Coqui.ai</a> </p>
+
+</div>
+  
+<div>
+  TTS demos on Hugging Face Spaces
+  <p>- <a href="https://huggingface.co/spaces/hexgrad/Kokoro-TTS">Kokoro-TTS</a></p>
+
+</div>
+
+
+
+<div>
+  <h3>Voice Cloning</h3>
+  <p>- Voice cloning aims to replicate a specific person’s voice.</p>
+  <p>- Uses a few seconds of target voice to adapt a TTS model.</p>
+   <p>- It is an application that is built on top of TTS!</p>
+  <p>- Applications: personalization, dubbing, accessibility — and ethical concerns.</p>
+</div>
+
+  <div>
+  <h3>Voice Cloning</h3>
+  <p>Let's play with <a href="https://huggingface.co/spaces/ResembleAI/Chatterbox-Multilingual-TTS">this SOTA multilingual voice cloning demo app on Hugging Face!</a>  </p>
+  <p>I scraped <a href="https://en.wikipedia.org/wiki/Nagato_(Naruto)">Pain(from Naruto)</a>'s voice for this... </p>
+</div>
+
+  
+  
+<div>
+  <h3>Mechanism of Voice Cloning</h3>
+  <p>1. Speaker embedding extraction from sample audio.</p>
+  <p>2. Conditioning the TTS model on this embedding.</p>
+  <p>3. Model generates speech in the target voice.</p>
+</div>
+
+
+<div>
+  <h3>Zero-Shot Voice Cloning</h3>
+  <p>Modern systems can mimic voices without retraining.</p>
+  <p>- Example: OpenAI's Voice Engine and Microsoft’s VALL-E.</p>
+  <p>- - They use embeddings learned from massive speaker datasets.</p>
+</div>
+
+
+<div>
+  <h3>Ethical and Security Concerns</h3>
+  <p>Voice deepfakes raise issues in consent, fraud, and misinformation.</p>
+  <p>- Solutions: watermarking, detection models, and voice authenticity verification.</p>
+</div>
+
+
+<div>
+  <h3>🤗Bringing It All Together</h3>
+  <p>Speech-to-Text + Text-to-Speech enables:</p>
+  <ul>
+    <li>Conversational AI</li>
+    <li>Combined with a text-to-text translation model, it can make real-time AUDIO translation</li>
+    <li>Accessibility tools</li>
+  </ul>
+</div>
+
+<div>
+  <h3>🕶️Future direction: </h3>
+  <p>combining speech, vision, and text for richer context.</p>
+  <p>Example: multimodal assistants that see, hear, and talk.</p>
+</div>
+
+
+<div>
+  <h3>Summary</h3>
+  <ul>
+    <li>AI in speech processing mainly include STT and TTS.</li>
+    <li>STT enables machines to listen.</li>
+    <li>TTS enables machines to speak.</li>
+    <li>Voice cloning is built on top of TTS and it personalizes interaction.</li>
+  </ul>
+</div>
+
+
+  <div> 
+    Homework:
+   <br />
+    - Using the STT APP we built in-class as a starting point, build a web app that include TTS APIs, e.g. <a href="https://platform.openai.com/docs/guides/text-to-speech">OpenAI's TTS API </a> 
+   <br />
+    - or  <a href="https://platform.openai.com/docs/guides/text-to-speech">Sora</a> for some text-to-video generative fun...
+      <br />
+    - If you does not have allowance on your account, send me a message and I'll send you my API keys!
+  <br />
+    - SEND ME your dev note by next Monday!
+  </div>
+
+   <div> 
+    🕶️ What we have learnt today:
+      <br />
+   Industry-level AI models for speech processing in
+     <br />
+    - Speech-to-Text
+    <br />
+    - Text-to-Speech, test with deployed model on hugging face!
+    <br />
+    - Voice Clone, test with deployed model on hugging face!
+    <br />
+    - Hands-on practice on using OpenAI's API in your web app 
+      <br />
+     (we built in class a demo web app today with OpenAI API for the Whisper model!)
+
+  </div>
+  
+  <div> 
+    We'll see you next Monday same time and same place!
+  </div>
+  
+</body>
+</html>
