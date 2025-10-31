@@ -177,7 +177,7 @@
 <div>
   <h2>Text-to-3D Generation</h2>
   <p>Goal: create a 3D object directly from a text prompt like “a red chair with golden legs”.</p>
-  <p> - Combines text understanding (via CLIP or language models) and 3D synthesis (via NeRF or diffusion).</p>
+  <p> - Combines text understanding (via CLIP or language models) and 3D synthesis (via NeRF or gaussian splatting or diffusion).</p>
 </div>
 
   <div>
@@ -256,8 +256,11 @@
 </div>
 
 <div>
-  <h3>Hands-on</h3> 
-  <p>how to have an AI model from github to run locally on our machines? - using <a href="https://github.com/openai/shap-e?tab=readme-ov-file">Shap_e from OpenAI on github </a> as an example</p>
+  <h3>✋Hands-on</h3> 
+  <p>We have seen quite a few AI models released on GitHub! </p>
+  <p>How to test an AI model released on github? - A useful skill if you want to explore state-of-the-art!</p>
+  <p>- The idea is to setup the project on our local machine and inference the model locally. </p>
+  <p>Here is how: let's use <a href="https://github.com/openai/shap-e?tab=readme-ov-file">Shap_E from OpenAI on github </a> as an example</p>
   <ul>
     <li>Read the Readmd file for instructions!</li>
     <li>Download the code</li>
@@ -282,13 +285,11 @@
         <br />
    - 3D representations: point clouds, meshes, voxels, implicit fields
      <br />
-    - Image-to-3D: NeRFs, multi-view diffusion, Gaussian splats
+    - Image-to-3D models: NeRFs, multi-view diffusion, Gaussian splats
+  <br />
+     - Text-to-3D models: DreamFusion, Magic3D, Fantasia3D, Hunyuan3D 
 <br />
-     - Text-to-3D: CLIP-guided diffusion, DreamFusion, Magic3D, Fantasia3D
-      <br />
-   - Core techniques: SDS, differentiable rendering, latent diffusion
-<br />
-     - Hands-on: a pipeline for working with models from github -> checkout the code repo, prepare environment, run the code provided for model inference 
+     - Hands-on: a pipeline for testing models from github -> checkout the code repo to a machine, prepare environment, run the code provided for model inference 
   </div>
   
   <div> 
