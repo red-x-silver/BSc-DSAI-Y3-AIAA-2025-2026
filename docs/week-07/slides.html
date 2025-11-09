@@ -54,6 +54,7 @@
   </ul>
 </div>
 
+
 <div>
   <h3>Historical Use of AI in Games</h3>
   <ul>
@@ -73,6 +74,14 @@
     <li>Player modeling and personalization</li>
   </ul>
 </div>
+
+  <div>
+  <h3>Case study: <a href="https://arxiv.org/pdf/2304.03442">this research work on multi-agent AI that interacts with each other</a></h3>
+  <p><a href="https://www.youtube.com/watch?v=ZdoU9vI2yCg">Demo video here</a></p>
+  <p><a href="https://github.com/joonspk-research/generative_agents">Example code here</a></p>
+  <p>BTW this project is LLM-based and today we'll introduce another AI domain reinforcement learning.</p>
+</div>
+  
 
 <div>
   <h2>Reinforcement Learning (RL): The Basics</h2>
@@ -145,8 +154,9 @@
 <div>
   <h3>Example: Simple Game Agent</h3>
   <p>Goal: learn to keep a ball balanced on a platform.</p>
+  <p>Env: the game including the platform and gravity</p>
   <p>State = ball position, Action = tilt direction, Reward = how long it stays on.</p>
-  <p>Agent learns optimal control through repeated trials.</p>
+  <p>Agent learns optimal control through repeated trials, where the control refers to what action to take given any state.</p>
 </div>
 
 
@@ -156,7 +166,7 @@
     <li><b>Q-Learning:</b> learns Q(s,a) = value of taking action a in state s</li>
     <li><b>Deep Q-Networks (DQN):</b> neural network approximates Q-function</li>
   </ul>
-  <p>Used in Atari game agents that learn directly from pixels.</p>
+  <p>Used in Atari game agents that learn directly from pixels (<a href="https://www.youtube.com/watch?v=V1eYniJ0Rnk&pp=ygUuUGxheWluZyBBdGFyaSB3aXRoIERlZXAgUmVpbmZvcmNlbWVudCBMZWFybmluZw%3D%3D"> a video demo </a>) </p>   
 </div>
 
 <div>
@@ -181,6 +191,7 @@
 <div>
   <h3>Reward Design</h3>
   <p>The reward function determines what the agent learns.</p>
+  <p>The reward may not be immediate - for example, the only reward for the go/chess game (lose or win) is revealed only after when the round is finished.</p>
   <ul>
     <li>Positive rewards reinforce good behavior</li>
     <li>Negative rewards penalize bad moves</li>
@@ -230,7 +241,7 @@
 </div>
 
 <div>
-  <h2>AI in Game Development</h2>
+  <h2>Other AI in Game Development</h2>
   <ul>
     <li>Procedural content generation (levels, textures, quests)</li>
     <li>Dynamic difficulty adjustment (personalized challenges)</li>
@@ -239,15 +250,6 @@
   </ul>
 </div>
 
-<div>
-  <h3>AI for Player Modeling</h3>
-  <p>Analyze player behavior to adapt game experience:</p>
-  <ul>
-    <li>Predict skill level and churn risk</li>
-    <li>Recommend challenges or items</li>
-    <li>Enable personalized narratives</li>
-  </ul>
-</div>
 
 <div>
   <h3>Challenges in Game AI</h3>
@@ -295,11 +297,20 @@
 
    <div> 
     🕶️ What we have learnt today:
-        <br />
-   - AI in games: Reinforcement learning agents, content generation
-     <br />
-     - Reinforcement Learning (RL) basics
+       
+      <br /> - Reinforcement Learning (RL) basics
+       <br /> - AI applications in games: agents using LLM, agents using RL, dialogue generation using LLM, content generation using generative AI
   </div>
+
+    <div> 
+    Recommended resources for RL:
+   <br />
+    - <a href="https://huggingface.co/learn/deep-rl-course/en/unit1/introduction">Deep RL course on hugging face </a>! 
+  <br />
+   - <a href="https://youtube.com/playlist?list=PLqYmG7hTraZDM-OYHWgPebj2MfCFzFObQ&si=yDcuNvJf5gMXlhUp">RL course by David Silver at UCL </a>! 
+
+  </div>
+  
   
   <div> 
     We'll see you next Monday same time and same place!
