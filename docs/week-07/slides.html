@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <title>Artificial Intelligence and Advanced Analytics 06</title>
+  <!-- This whole presentation was made with Big: https://github.com/tmcw/big -->
+  
+  <link href="../big/big.css" rel="stylesheet" type="text/css" />
+  <script src="../big/big.js"></script>
+  <link href="../big/themes/lightWhite.css" rel="stylesheet" type="text/css" />
+
+  <!-- Favicon link below, via https://emojitofavicon.com -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%2210 0 100 100%22><text y=%22.90em%22 font-size=%2290%22>🍴</text></svg>"></link>
+  
+  <style>
+    body {
+      background-color: #EDDD6E;
+      font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, Ubuntu, roboto, noto, segoe ui, arial, sans-serif;
+      /* font-weight: 700;*/
+      margin: 0;
+      padding: 0;
+      font-style: normal;
+      font-size: 21px;
+    }
+  </style>
+  
+</head>
+<body>
+  <div>
+    AIAA👐
+    <br />
+    Lecture 07
+    <br />
+    AI applications in games
+  </div>
+    
+  <div>Welcome 👩‍🎤🧑‍🎤👨‍🎤</div>
+  
+
+  
+  <div> First of all, don't forget to confirm your attendence on <a href="https://www.arts.ac.uk/study-at-ual/course-regulations/attendance-policy/attendance-monitoring"> SEAtS App!  </a></div>
+
+
+
+<div>
+  <h3>Why Games?</h3>
+  <p>Games is FUN!</p>
+  <p>Games provide rich, interactive environments for testing AI algorithms that is generalizable to the real world!</p>
+  <ul>
+    <li>Complex decision-making</li>
+    <li>Dynamic and partially observable worlds</li>
+    <li>Clear reward signals for learning</li>
+  </ul>
+</div>
+
+<div>
+  <h3>Historical Use of AI in Games</h3>
+  <ul>
+    <li>Rule-based NPCs (e.g., early arcade games)</li>
+    <li>Path finding (A* algorithm)</li>
+    <li>Finite State Machines (FSMs) for enemy behavior</li>
+    <li>Procedural generation (e.g., Rogue, Minecraft)</li>
+  </ul>
+</div>
+
+<div>
+  <h3>Modern AI in Games</h3>
+  <ul>
+    <li>Reinforcement learning agents (self-learning players)</li>
+    <li>Neural networks for strategy and decision-making</li>
+    <li>Generative models for assets, dialogue, and level design</li>
+    <li>Player modeling and personalization</li>
+  </ul>
+</div>
+
+<div>
+  <h2>Reinforcement Learning (RL): The Basics</h2>
+  <p>RL is about learning to act by trial and error to maximize long-term reward.</p>
+</div>
+
+  <div>
+  <h3>Supervised Learning vs Reinforcement Learning</h3>
+  <br />
+
+  <b>Supervised Learning</b>
+  <ul>
+    <li>Learns from labeled data — each input has a known correct output.</li>
+    <li>Goal: minimize prediction error (e.g. image classification, speech recognition).</li>
+    <li>Training happens on fixed datasets.</li>
+    <li>Feedback: "Here’s the right answer."</li>
+  </ul>
+
+  <b>Reinforcement Learning</b>
+  <ul>
+    <li>Learns by interacting with an environment through trial and error.</li>
+    <li>Goal: maximize cumulative reward over time.</li>
+    <li>Training happens dynamically through experience.</li>
+    <li>Feedback: "That action was good/bad — adjust policy accordingly."</li>
+  </ul>
+
+</div>
+  
+<div>
+  <h3>SL vs. RL key difference</h3>
+  <p>Supervised learning learns from examples; Reinforcement learning learns from consequences.</p>
+ <p>SL trains a network to recognize cats from labeled images.  </p>
+  <p>RL trains an agent (which may include neural nets) to play a game, improving by scoring higher rewards. </p>
+<p>RL faces a more uncertain environment - no hard labeled example, and even the reward of an action is not easy to estimate. </p>
+ 
+</div>
+  
+<div>
+  <h3>The RL Framework</h3>
+  <p>An RL problem is defined by:</p>
+  <ul>
+    <li><b>Agent</b> – learner/decision maker</li>
+    <li><b>Environment</b> – world with which the agent interacts</li>
+    <li><b>State (s)</b> – current situation</li>
+    <li><b>Action (a)</b> – possible move/decision</li>
+    <li><b>Reward (r)</b> – feedback from the environment</li>
+  </ul>
+</div>
+
+<div>
+  <h3>The RL Loop</h3>
+  <p>At each step:</p>
+  <ol>
+    <li>Agent observes the current state</li>
+    <li>Selects an action</li>
+    <li>Environment responds with a reward and new state</li>
+    <li>Agent updates its policy to improve future actions</li>
+  </ol>
+</div>
+
+<div>
+  <h3>Key RL Concepts</h3>
+  <ul>
+    <li><b>Policy:</b> rule that defines agent’s behavior (mapping from states to actions)</li>
+    <li><b>Value Function:</b> expected future reward of a state</li>
+    <li><b>Exploration vs. Exploitation:</b> trying new actions vs. using known good ones</li>
+  </ul>
+</div>
+
+<div>
+  <h3>Example: Simple Game Agent</h3>
+  <p>Goal: learn to keep a ball balanced on a platform.</p>
+  <p>State = ball position, Action = tilt direction, Reward = how long it stays on.</p>
+  <p>Agent learns optimal control through repeated trials.</p>
+</div>
+
+
+<div>
+  <h3>Value-Based Methods</h3>
+  <ul>
+    <li><b>Q-Learning:</b> learns Q(s,a) = value of taking action a in state s</li>
+    <li><b>Deep Q-Networks (DQN):</b> neural network approximates Q-function</li>
+  </ul>
+  <p>Used in Atari game agents that learn directly from pixels.</p>
+</div>
+
+<div>
+  <h3>Policy-Based Methods</h3>
+  <ul>
+    <li>Directly learn a policy π(a|s) without estimating Q-values</li>
+    <li>Use gradient-based updates to improve expected reward</li>
+  </ul>
+  <p>Examples: REINFORCE, PPO (Proximal Policy Optimization).</p>
+</div>
+
+<div>
+  <h3>Actor–Critic Methods</h3>
+  <p>Combine value and policy learning:</p>
+  <ul>
+    <li><b>Actor:</b> decides which action to take</li>
+    <li><b>Critic:</b> evaluates the action via a value function</li>
+  </ul>
+  <p>More stable and efficient training — used in modern RL frameworks.</p>
+</div>
+
+<div>
+  <h3>Reward Design</h3>
+  <p>The reward function determines what the agent learns.</p>
+  <ul>
+    <li>Positive rewards reinforce good behavior</li>
+    <li>Negative rewards penalize bad moves</li>
+    <li>Shaping rewards helps learning efficiency</li>
+  </ul>
+</div>
+
+<div>
+  <h3>Popular RL Benchmarks</h3>
+  <ul>
+    <li><a href="https://github.com/adhiiisetiawan/atari-dqn">Atari 2600 suite (DQN)</a></li>
+    <li><a href="https://github.com/Farama-Foundation/Gymnasium">OpenAI Gym / Gymnasium environments</a></li>  
+    <li><a href="https://github.com/google-deepmind/dm_control">DeepMind Control Suite</a></li> 
+    <li><a href="https://huggingface.co/learn/deep-rl-course/en/unit5/introduction">Unity ML-Agents (3D simulation)</a></li>
+  </ul>
+</div>
+
+
+<div>
+  <h2>AI Breakthroughs in Games</h2>
+  <p>Games have driven many major AI advances.</p>
+</div>
+
+<div>
+  <h3><a href="https://deepmind.google/research/alphago/">AlphaGo & AlphaZero (DeepMind)</a></h3>
+  <ul>
+    <li>Used RL + deep networks + Monte Carlo Tree Search</li>
+    <li>Mastered Go, Chess, and Shogi from self-play</li>
+    <li>Demonstrated superhuman strategic reasoning</li>
+  </ul>
+</div>
+
+<div>
+  <h3><a href="https://openai.com/index/openai-five/">OpenAI Five</a></h3>
+  <ul>
+    <li>Trained agents to play Dota 2 cooperatively</li>
+    <li>Used massive-scale reinforcement learning (PPO)</li>
+    <li>Learned teamwork, coordination, and strategy</li>
+  </ul>
+</div>
+
+<div>
+  <h3><a href="https://deepmind.google/blog/muzero-mastering-go-chess-shogi-and-atari-without-rules/">MuZero (DeepMind)</a></h3>
+  <p>Combines RL and model-based planning without knowing game rules.</p>
+  <p>Predicts future outcomes and learns optimal behavior.</p>
+  <p>Achieved top performance on Atari, Go, and Chess.</p>
+</div>
+
+<div>
+  <h2>AI in Game Development</h2>
+  <ul>
+    <li>Procedural content generation (levels, textures, quests)</li>
+    <li>Dynamic difficulty adjustment (personalized challenges)</li>
+    <li>NPC dialogue using large language models</li>
+    <li>Animation and motion synthesis via generative models</li>
+  </ul>
+</div>
+
+<div>
+  <h3>AI for Player Modeling</h3>
+  <p>Analyze player behavior to adapt game experience:</p>
+  <ul>
+    <li>Predict skill level and churn risk</li>
+    <li>Recommend challenges or items</li>
+    <li>Enable personalized narratives</li>
+  </ul>
+</div>
+
+<div>
+  <h3>Challenges in Game AI</h3>
+  <ul>
+    <li>Balancing fun vs. fairness</li>
+    <li>Complex multi-agent interactions</li>
+    <li>Scalability of RL training</li>
+    <li>Ethical design (non-exploitative engagement)</li>
+  </ul>
+</div>
+
+<div>
+  <h3>Summary</h3>
+  <ul>
+    <li>Games = ideal playground for developing and testing AI</li>
+    <li>Reinforcement learning teaches agents via interaction and reward</li>
+    <li>AI now shapes both gameplay and game creation</li>
+  </ul>
+  <p>Next: hands-on exploration with RL agents in simple game environments.</p>
+</div>
+
+
+<div>
+  <h3>✋Hands-on</h3> 
+  <p>A slightly tricky thing: for fun AI application in game, a fun game implementation is needed... </p>
+ <p>For research purpose, we'll start with the barebone python implementation(no nice GUI yet sadly)</p>
+  <p>let's go check some examples of AI agent RL training from <a href="https://github.com/datamllab/awesome-game-ai?tab=readme-ov-file">this platform</a></p>
+  <ul>
+    <li>Read the Readmd file for instructions!</li>
+    <li>Pick a simple game to start with</li>
+    <li>Run the cells on the google colab</li>
+  </ul>
+</div>
+
+     
+  <div> 
+    Homework:
+   <br />
+    - Start preparing for your <a href="https://moodle.arts.ac.uk/mod/resource/view.php?id=1559297">final project</a>! 
+  <br />
+    - If you plan to work with content we have covered so far, send me a small proposal on what you plan to make and I'll recommend relevant resources!
+  <br />
+    - If you plan to work with content we have not covered so far, send me a message and I'll recommend early readings/preparation for you!
+  </div>
+
+   <div> 
+    🕶️ What we have learnt today:
+        <br />
+   - AI in games: Reinforcement learning agents, content generation
+     <br />
+     - Reinforcement Learning (RL) basics
+  </div>
+  
+  <div> 
+    We'll see you next Monday same time and same place!
+  </div>
+  
+</body>
+</html>
