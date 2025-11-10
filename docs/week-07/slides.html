@@ -58,20 +58,19 @@
 <div>
   <h3>Historical Use of AI in Games</h3>
   <ul>
-    <li>Rule-based NPCs (e.g., early arcade games)</li>
-    <li>Path finding (A* algorithm)</li>
-    <li>Finite State Machines (FSMs) for enemy behavior</li>
-    <li>Procedural generation (e.g., Rogue, Minecraft)</li>
+    <li>Rule-based NPCs (e.g., <a href="https://www.youtube.com/watch?v=-CbyAk3Sn9I">early arcade games like Pac-Man</a>)</li> 
+    <li>Path finding (e.g. <a href="https://www.youtube.com/shorts/KtnDbeW0OcA">A* algorithm</a> )</li>
+    <li>Finite State Machines (FSMs) for enemy behavior(e.g. <a href="https://www.youtube.com/watch?v=JyF0oyarz4U">FSM in half-life</a>)</li>
+    <li>Procedural generation (e.g., in <a href="https://www.youtube.com/watch?v=YyVAaJqYAfE">Minecraft</a>)</li>
   </ul>
 </div>
 
 <div>
   <h3>Modern AI in Games</h3>
   <ul>
-    <li>Reinforcement learning agents (self-learning players)</li>
-    <li>Neural networks for strategy and decision-making</li>
-    <li>Generative models for assets, dialogue, and level design</li>
-    <li>Player modeling and personalization</li>
+    <li>Reinforcement learning agents (<a href="https://www.youtube.com/watch?v=ldXxDNjS5jw">single agent learning</a>, <a href="https://www.youtube.com/watch?v=kopoLzvh5jY">multi-agent learning</a>)</li>  
+    <li>Generative models for assets(from last week!), dialogue, and level design (<a href="https://www.youtube.com/watch?v=DLY38_vJ0hc">an example here</a>)</li>
+    <li>Player modeling and personalization(e.g. player avatar)</li>
   </ul>
 </div>
 
@@ -92,7 +91,7 @@
   <h3>Supervised Learning vs Reinforcement Learning</h3>
   <br />
 
-  <b>Supervised Learning</b>
+  <b>SL</b>
   <ul>
     <li>Learns from labeled data — each input has a known correct output.</li>
     <li>Goal: minimize prediction error (e.g. image classification, speech recognition).</li>
@@ -100,7 +99,7 @@
     <li>Feedback: "Here’s the right answer."</li>
   </ul>
 
-  <b>Reinforcement Learning</b>
+  <b>RL</b>
   <ul>
     <li>Learns by interacting with an environment through trial and error.</li>
     <li>Goal: maximize cumulative reward over time.</li>
@@ -112,11 +111,10 @@
   
 <div>
   <h3>SL vs. RL key difference</h3>
-  <p>Supervised learning learns from examples; Reinforcement learning learns from consequences.</p>
- <p>SL trains a network to recognize cats from labeled images.  </p>
-  <p>RL trains an agent (which may include neural nets) to play a game, improving by scoring higher rewards. </p>
-<p>RL faces a more uncertain environment - no hard labeled example, and even the reward of an action is not easy to estimate. </p>
- 
+  <p>- Supervised learning learns from examples; Reinforcement learning learns from consequences.</p>
+ <p>- SL trains a network to recognize cats from labeled images.  </p>
+  <p>- RL trains an agent (which may include neural nets) to play a game, improving by scoring higher rewards. </p>
+<p>- RL faces a more uncertain environment - no hard labeled example, and even the reward of an action is not easy to estimate. </p>
 </div>
   
 <div>
@@ -153,10 +151,10 @@
 
 <div>
   <h3>Example: Simple Game Agent</h3>
-  <p>Goal: learn to keep a ball balanced on a platform.</p>
-  <p>Env: the game including the platform and gravity</p>
-  <p>State = ball position, Action = tilt direction, Reward = how long it stays on.</p>
-  <p>Agent learns optimal control through repeated trials, where the control refers to what action to take given any state.</p>
+  <p>- Goal: learn to keep a ball balanced on a platform.</p>
+  <p>- Env: the game including the platform and gravity</p>
+  <p>- State = ball position, Action = tilt direction, Reward = how long it stays on.</p>
+  <p>- Agent learns optimal control through repeated trials, where the control refers to what action to take given any state.</p>
 </div>
 
 
