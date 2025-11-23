@@ -87,9 +87,9 @@
 
 <div>
   <h3>Emotion Representation Models (from Psychology!)</h3>
-  <p>How do we define and measure “emotion” for AI models?</p>
+  <p>How do we define and measure “emotion”?</p>
   <ul>
-    <li><a href="https://en.wikipedia.org/wiki/Discrete_emotion_theory">Discrete Categories</a> : anger, fear, sadness, happiness, disgust, surprise (Ekman)</li>
+    <li><a href="https://en.wikipedia.org/wiki/Discrete_emotion_theory">Discrete model</a> : anger, fear, sadness, happiness, disgust, surprise (Ekman)</li>
     <li><a href="https://www.sciencedirect.com/topics/psychology/circumplex-model">Circumplex Model</a>: 
       <ul>
         <li>Valence (positive → negative)</li>
@@ -102,7 +102,7 @@
 </div>
   
 <div>
-  <h3>Modalities in Affective Computing</h3>
+  <h3>Data Modalities in Affective Computing 💿</h3>
   <ul>
     <li><b>Facial expressions</b> — computer vision</li>
     <li><b>Speech & voice</b> — prosody, tone, pitch, rhythm</li>
@@ -113,7 +113,7 @@
 </div>
 
   <div>
-  <h3>Facial Emotion Recognition</h3>
+  <h3>Facial Emotion Recognition 🙄</h3>
   <ul>
     <li>Input: video frames or facial landmarks</li>
     <li>Examples: <a href="https://huggingface.co/ElenaRyumina/face_emotion_recognition">this</a> on hugging face, <a href="https://arxiv.org/abs/2403.13731">this</a> research work and <a href="https://github.com/mujiyantosvc/Facial-Expression-Recognition-FER-for-Mental-Health-Detection-">this</a> Github repo. </li>    
@@ -123,7 +123,7 @@
 </div>
 
   <div>
-  <h3>Speech Emotion Recognition (SER)</h3>
+  <h3>Speech Emotion Recognition (SER) 🗯️</h3>
   <ul>
     <li>Input audio features:
       <ul>
@@ -139,13 +139,13 @@
 </div>
 
 <div>
-  <h3>Text Emotion Recognition</h3>
+  <h3>Text Emotion Recognition 💬</h3>
   <ul>
     <li>Sentiment analysis (early precursor!)</li>
-    <li>Examples: <a href="https://www.kaggle.com/code/shivamburnwal/speech-emotion-recognition">this</a> Kaggle notebook, <a href="https://www.youtube.com/watch?v=s5-8yeYJV7Y">this</a> YTB tutorial and <a href="https://github.com/x4nth055/emotion-recognition-using-speech?tab=readme-ov-file">this</a> Github repo. </li>    
+    <li>Examples: <a href="https://huggingface.co/tabularisai/multilingual-sentiment-analysis">this</a> model on Hugging Face, <a href="https://huggingface.co/siebert/sentiment-roberta-large-english">this</a> model on Hugging Face tutorial and <a href="https://tessa-deployed.streamlit.app/">this</a> App from Github (prediction not so good though) </li>    
     <li>Common model options:
       <ul>
-        <li>BERT, RoBERTa, DeBERTa</li>
+        <li>pre-trained language models: BERT, RoBERTa, DeBERTa</li>
         <li>LLMs with emotion classification heads (extra layers at the end of the neural network)</li>
       </ul>
     </li>
@@ -159,16 +159,17 @@
 </div>
 
   <div>
-  <h3>Physiological Emotion Recognition</h3>
+  <h3>Physiological Emotion Recognition🫀</h3>
     
   <ul>
     <li>Signals:
       <ul>
         <li>ECG & heart rate variability</li>
-        <li>Electrodermal activity (skin conductance)</li>
-        <li>EEG/brain signals</li>
+        <li>Electrodermal activity: <a href="https://en.wikipedia.org/wiki/Electrodermal_activity">EDA</a> (skin conductance)</li>
+        <li><a href="https://en.wikipedia.org/wiki/Electroencephalography">EEG</a> (brain signals) </li>
       </ul>
     </li>
+  <li> Devices for collecting physio data:smartwatches/bands, wearable sensors, etc. </li>
     <li>Used in:
       <ul>
         <li>Stress detection</li>
@@ -176,35 +177,35 @@
         <li>Assistive technology</li>
       </ul>
     </li>
-        <li>Examples: <a href="https://www.kaggle.com/code/shivamburnwal/speech-emotion-recognition">this</a> Kaggle notebook, <a href="https://www.youtube.com/watch?v=s5-8yeYJV7Y">this</a> YTB tutorial and <a href="https://github.com/x4nth055/emotion-recognition-using-speech?tab=readme-ov-file">this</a> Github repo. </li>    
-
+    <li>Examples: <a href="https://www.nature.com/articles/s41597-024-03429-3">this</a> article from Nature, <a href="https://arxiv.org/abs/2205.10466">this</a> survey paper and <a href="https://www.youtube.com/watch?v=NeZE34GiMII">this</a> work of detecting fear from gaming. </li>    
   </ul>
 </div>
 
   <div>
-  <h3>Multimodal Emotion Recognition</h3>
+  <h3>Multimodal Emotion Recognition ⚔️ </h3>
   <ul>
     <li>Combines face + voice + text + physiological signals</li>
-    <li>Techniques:
+    <li>How to combine:
       <ul>
-        <li>Feature-level fusion</li>
-        <li>Late fusion (ensemble of modalities)</li>
+        <li>Feature-level fusion (in early layers)</li>
+        <li>Late fusion (ensemble of modalities in later layers)</li>
         <li>Transformer-based cross-modal attention</li>
       </ul>
     </li>
     <li>State-of-the-art: multimodal transformers</li>
+    <li>Related work: <a href="https://arxiv.org/abs/2409.07388">this</a>survey paper,<a href="https://www.youtube.com/watch?v=Tq7mCiaFwB8">this</a> lecture on YTB </li>
   </ul>
 </div>
 
   <div>
   <h3>Datasets in Affective Computing</h3>
   <ul>
-    <li><b>Facial:</b> FER+, AffectNet</li>
-    <li><b>Speech:</b> RAVDESS, IEMOCAP</li>
-    <li><b>Text:</b> GoEmotions</li>
-    <li><b>Multimodal:</b> MELD, CMU-MOSEI, CMU-MOSI</li>
+    <li><b>Facial:</b>  <a href="https://github.com/microsoft/FERPlus">FER+</a>, <a href="https://www.mohammadmahoor.com/pages/databases/affectnet/">AffectNet</a></li>
+    <li><b>Speech:</b> <a href="https://zenodo.org/record/1188976">RAVDESS</a>, <a href="https://tspace.library.utoronto.ca/handle/1807/24487">TESS</a></li>
+    <li><b>Text:</b> <a href="https://www.kaggle.com/datasets/debarshichanda/goemotions">GoEmotions</a></li>
+    <li><b>Multimodal:</b> <a href="https://sail.usc.edu/iemocap/">IEMOCAP</a>, <a href="https://affective-meld.github.io/">MELD</a>, <a href="https://www.kaggle.com/datasets/samarwarsi/cmu-mosei">CMU-MOSEI</a>, <a href="https://www.kaggle.com/datasets/mathurinache/cmu-mosi">CMU-MOSI</a></li>
   </ul>
-  <p>Important: many datasets are acted, not natural → limited realism.</p>
+  <p>Important: many datasets are "acted", not natural → limited realism.</p>
 </div>
 
   <div>
@@ -215,11 +216,13 @@
     <li>NPCs reacting emotionally to player actions</li>
     <li>Emotion-driven quest systems</li>
   </ul>
+<p>Related works: <a href="https://arxiv.org/pdf/2312.06925">this paper</a>, <a href="https://www.youtube.com/watch?v=_lp0libfp5M">Press Y to Cry: Generating Emotions in Videogame Narrative</a></p>
 </div>
+  
 <div>
   <h3>Emotion-Aware Voice Generation</h3>
   <ul>
-    <li>Models: StyleTTS, VITS, GPT-SoVITS</li>
+    <li>Related works: <a href="https://huggingface.co/spaces/ResembleAI/Chatterbox">Chatterbox</a>, <a href="https://github.com/RVC-Boss/GPT-SoVITS?tab=readme-ov-file">GPT-SoVITS</a></li>
     <li>Controls:
       <ul>
         <li>Valence, arousal</li>
@@ -233,27 +236,20 @@
   <h3>Emotion-Aware Chatbots</h3>
   <ul>
     <li>Detect emotion from user input (text + voice)</li>
-    <li>Select empathetic responses</li>
+    <li>Opt for empathetic responses</li>
     <li>Modulate tone and expressiveness in generation</li>
-    <li>Applications: customer support, health, education</li>
+    <li>Applications: customer support, caring, education</li>
   </ul>
 </div>
-<div>
-  <h3>Large Models for Emotion Understanding</h3>
-  <ul>
-    <li>LLMs with emotional reasoning</li>
-    <li>Vision-Language models (VLMs) detecting affect in images</li>
-    <li>Emotion embeddings (e.g., valence/arousal vectors)</li>
-    <li>Emergent ability: empathy simulation</li>
-  </ul>
-</div>
+
+  
 <div>
   <h3>Bias and Cultural Differences</h3>
   <ul>
     <li>Emotional expression varies by culture, gender, age</li>
     <li>Datasets often Western-centric</li>
     <li>Risk of misclassification → unfair decisions</li>
-    <li>Mitigation: diverse data, human oversight</li>
+    <li>Mitigation: diverse data, human supervision</li>
   </ul>
 </div>
   
@@ -288,16 +284,17 @@
 
 <div>
   <h3>✋Hands-on</h3> 
-  <p>A slightly tricky thing: for fun AI application in game, a fun game implementation is needed... </p>
- <p>For research purpose, we'll start with the barebone python implementation(no nice GUI yet sadly)</p>
-  <p>let's go check some examples of AI agent RL training from <a href="https://github.com/datamllab/awesome-game-ai?tab=readme-ov-file">this platform</a></p>
-  <ul>
-    <li>Read the Readmd file for instructions!</li>
-    <li>Pick a simple game to start with</li>
-    <li>Run the cells on the google colab</li>
-  </ul>
+  <p>Let's familiarise ourselves with our beefy CCI workstations!</p>
+  <p>Use whatever is free! There is also a booking system - our Orb system (underused). </p>
+  <p>Instruction <a href="https://moodle.arts.ac.uk/mod/resource/view.php?id=1569012">here</a></p>
 </div>
 
+  <div>
+  <h3>✋Recommended learning resources on affective computing:</h3> 
+  <p><a href="https://www.youtube.com/watch?v=5xF0VkB9k88">this video</a> and<a href="https://www.youtube.com/watch?v=I84eJxjrxWc">this video </a> from MIT media lab</p>
+</div>
+  
+  
      
   <div> 
     Homework:
@@ -318,9 +315,6 @@
      <br /> - High potential but high ethical responsibility
   </div>
 
-
-  
-  
   <div> 
     We'll see you next Monday same time and same place!
   </div>
