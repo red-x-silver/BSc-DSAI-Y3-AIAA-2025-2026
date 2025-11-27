@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <title>Artificial Intelligence and Advanced Analytics 10</title>
+  <!-- This whole presentation was made with Big: https://github.com/tmcw/big -->
+  
+  <link href="../big/big.css" rel="stylesheet" type="text/css" />
+  <script src="../big/big.js"></script>
+  <link href="../big/themes/lightWhite.css" rel="stylesheet" type="text/css" />
+
+  <!-- Favicon link below, via https://emojitofavicon.com -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%2210 0 100 100%22><text y=%22.90em%22 font-size=%2290%22>🍴</text></svg>"></link>
+  
+  <style>
+    body {
+      background-color: #EDDD6E;
+      font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, Ubuntu, roboto, noto, segoe ui, arial, sans-serif;
+      /* font-weight: 700;*/
+      margin: 0;
+      padding: 0;
+      font-style: normal;
+      font-size: 21px;
+    }
+  </style>
+  
+</head>
+<body>
+  <div>
+    AIAA👐
+    <br />
+    Lecture 10
+    <br />
+    Multi-modal AI
+  </div>
+    
+  <div>Welcome 👩‍🎤🧑‍🎤👨‍🎤</div>
+  
+
+  
+  <div> First of all, don't forget to confirm your attendence on <a href="https://www.arts.ac.uk/study-at-ual/course-regulations/attendance-policy/attendance-monitoring"> SEAtS App!  </a></div>
+
+<div>
+  <h3>By the end of this lecture, we will have learned:</h3>
+  <br />
+  <b>Theoretical:</b>
+  <br /> - What multimodal AI is and why it matters
+  <br /> - Core multimodal representations (text, image, audio, video)
+  <br /> - How cross-modal alignment works
+  <br /> - Fusion architectures: early, mid, late fusion
+  <br /> - How CLIP, BLIP-2, Gemini, and GPT-4o process multiple modalities
+  <br /><br />
+
+  <b>Applied:</b>
+  <br /> - Use CLIP for image–text similarity
+  <br /> - Build a simple multimodal search app
+  <br /> - Perform visual Q&A with GPT-4o API
+</div>
+
+  <div>
+  <h3>Why Multi-Modal AI?</h3>
+  <br />
+  - Many real-world tasks involve multiple data sources (modalities): text, image, audio, etc. <br />
+  - Richer context → better understanding<br />
+  - Improves robustness<br />
+  - Enables natural human-AI interaction<br />
+  - Foundation of modern generative AI (e.g., text→image, text→video)
+</div>
+
+  <div>
+  <h3>What is Multi-Modal AI?</h3>
+  <br />
+  AI systems that learn from and generate multiple forms of data (modalities):
+  <br />
+  - Text
+  - Images
+  - Audio
+  - Video
+  - 3D
+  - Sensor data (e.g., depth, heart rate)
+  <br /><br />
+  Goal: Build unified models that understand the world more like humans do, which means being able to take in and process information from different modalities.
+</div>
+
+  <div>
+  <h3>Modalities and their representations (a summary of what we have talked about so far)</h3>
+  <br />
+  - Text: tokens, embeddings<br />
+  - Image: pixels, patches, visual tokens<br />
+  - Audio: waveforms, spectrograms<br />
+  - Video: sequences of frames + audio<br />
+  - 3D: point clouds, meshes, NeRFs<br />
+  - Multisensory: physiological, depth, LiDAR
+</div>
+
+<div>
+  <h3>Core idea of multi-modal: shared representation space</h3>
+  <br />
+  Multi-modal models work by projecting different modalities into one aligned space:
+  <br /><br />
+  text → embedding<br />
+  image → embedding<br />
+  audio → embedding<br />
+  video → embedding<br /><br />
+  Then perform alignment, fusion, or cross-attention.
+</div>
+
+  <div>
+  <h3>Shared Embedding Space</h3>
+  <pre>
+      Text "a cat"   → •
+      Image of cat   → •
+      Audio "meow"   → •
+      Video clip     → •
+
+  All collapse into nearby vectors → aligned meaning.
+  </pre>
+</div>
+
+  
+<div>
+  <h3>How to fuse the representations? Three approaches!</h3>
+  <br />
+  <b>Early Fusion</b>: merge raw features<br />
+  <b>Mid Fusion</b>: merge learned embeddings<br />
+  <b>Late Fusion</b>: merge final predictions<br /><br />
+  Modern LMMs typically use mid-level fusion with cross-attention.
+</div>
+
+  <div>
+  <h3>Fusion Architectures (Diagram)</h3>
+  <pre>
+Early Fusion:           Mid Fusion:                 Late Fusion:
+ [image+text mixed]     [image]   [text]            [image prediction]
+     │                  │  ▲       │  ▲             │
+  One Transformer       │  │cross  │  │cross        ├── combine
+     │                  ▼  │attn   ▼  │attn         │
+   Output             Joint Embeddings            Final decision
+  </pre>
+</div>
+
+  <div>
+  <h3>Multi-modal with Transformer neural network (Concept)</h3>
+  <pre>
+Tokens:
+ [Text Tokens] [Image Tokens] [Audio Tokens] ...
+
+Transformer Layers:
+ ┌─────────────────────────────────────────────┐
+ │  Self-attention across ALL modalities       │
+ │  Cross-modal attention emerges naturally    │
+ └─────────────────────────────────────────────┘
+
+Output:
+ - Captioning
+ - Q&A
+ - Retrieval
+ - Reasoning
+ - Generation
+  </pre>
+</div>
+
+  
+  
+
+ <div>
+  <h3>Cross-Modal Alignment</h3>
+  <br />
+  Models learn matching relationships:
+  <br />
+  - Text ↔ Image (captioning, retrieval)<br />
+  - Text ↔ Audio (speech & sound recognition)<br />
+  - Text ↔ Video (instruction following)<br /><br />
+  Technique: contrastive learning (CLIP, ImageBind).
+</div>
+
+<div>
+  <h3>Vision-Language Foundations</h3>
+  <br />
+  Example models:<br />
+  - CLIP<br />
+  - ALIGN<br />
+  - BLIP / BLIP-2<br />
+  - Flamingo<br /><br />
+  Pattern: pretrained vision encoder + pretrained LLM + adapter.
+</div>
+
+  <div>
+  <h3>CLIP: Contrastive Learning</h3>
+  <br />
+  - Train image encoder + text encoder together<br />
+  - Contrastive objective aligns text and image embeddings<br />
+  - Enables zero-shot image classification<br />
+  - Foundation for modern text-to-image generation systems
+</div>
+  <div>
+  <h3>CLIP Intuition (Visual Diagram)</h3>
+  <pre>
+   Text:  "a dog running"      Image:  🐕‍🦺🏃
+           │                         │
+           ▼                         ▼
+     Text Encoder              Image Encoder
+           │                         │
+           └────► Shared Embedding ◄───┘
+                       Space
+           └──── Contrastive Loss ────┘
+  </pre>
+  CLIP learns to bring matching text–image pairs closer together.
+</div>
+
+  
+
+  <div>
+  <h3>BLIP-2: Bootstrapping Language-Image Pretraining</h3>
+  <br />
+  - Frozen Vision Transformer encoder<br />
+  - Frozen LLM (e.g., OPT, FlanT5)<br />
+  - Learned Q-Former maps image features → tokens for LLM<br /><br />
+  Enables instruction-following with multimodal inputs.
+</div>
+
+  <div>
+  <h3>Modern Multimodal LLMs</h3>
+  <br />
+  - GPT-4o<br />
+  - Google Gemini<br />
+  - LLaVA<br />
+  - Qwen-VL<br /><br />
+  Characteristics: unified encoder-decoder + cross-attention.
+</div>
+
+  
+
+  <div>
+  <h3>Multi-modal generation: Text-to-Image Models</h3>
+  <br />
+  - Diffusion Models (Stable Diffusion, Imagen, DALL·E)<br />
+  - Generative Transformers (OpenAI Sora pipeline uses hybrid components)<br /><br />
+  Key technique: cross-attention between text embeddings and visual latents.
+</div>
+
+  <div>
+  <h3>Multi-modal generation: Text-to-Audio Models</h3>
+  <br />
+  - Whisper: speech-to-text<br />
+  - AudioLM / Bark: text-to-speech<br />
+  - ImageBind: image ↔ audio ↔ video ↔ IMU<br /><br />
+  Objective: unify audio with other modalities in shared space.
+</div>
+
+  <div>
+  <h3>Multi-modal generation: Image-to-Text Model</h3>
+  <br />
+  - VideoCLIP<br />
+  - LiT<br />
+  - PaLI<br />
+  - Flamingo<br /><br />
+  Techniques: frame-level encoders, temporal transformers.
+</div>
+
+
+  <div>
+  <h3>Case study: OpenAI Sora</h3>
+  <br />
+  - Text → Video generative model<br />
+  - Video synthesis + physics-aware consistency<br />
+  - Latent token transformer<br />
+  - Multimodal conditioning: text, images, videos
+</div>
+
+  <div>
+  <h3>Multimodal Tokenization</h3>
+  <br />
+  Emerging trend: convert every modality into discrete tokens<br />
+  - VQ-VAE<br />
+  - VQ-GAN<br />
+  - Tokenizer for image, audio, video<br /><br />
+  Enables unified transformer architecture.
+</div>
+
+  <div>
+  <h3>Multimodal Reasoning Capabilities</h3>
+  <br />
+  - Understanding charts, diagrams<br />
+  - Visual question answering<br />
+  - Image-based math problems<br />
+  - Multi-step reasoning with visual grounding
+</div>
+
+  <div>
+  <h3>Instruction Tuning for Multimodality</h3>
+  <br />
+  - Combine vision-language pairs + instructions<br />
+  - Goals: improve alignment, reduce hallucinations<br /><br />
+  Example datasets: LLaVA-Instruct, VQAv2, TextCaps.
+</div>
+
+  <div>
+  <h3>Challenges in Multi-modal AI</h3>
+  <br />
+  - Temporal modeling in video<br />
+  - Tokenization cost for high-res data<br />
+  - Cross-modal alignment errors<br />
+  - Hallucinations & miscalibrated confidence<br />
+  - Dataset biases across modalities
+</div>
+
+  <div>
+  <h3>Evaluation of Multi-Modal Models</h3>
+  <br />
+  - Zero-shot retrieval (image-text)<br />
+  - VQA (visual question answering)<br />
+  - Captioning metrics (CIDEr, BLEU)<br />
+  - Video QA / temporal benchmarks<br />
+  - Real-world tasks: robotics, navigation
+</div>
+
+  <div>
+  <h3>The Future of Multi-Modal AI</h3>
+  <br />
+  - Unified world models<br />
+  - Integration of 3D + physics + video<br />
+  - Agents that perceive, act, and reason<br />
+  - Long-horizon multimodal memory<br /><br />
+  A step toward general-purpose embodied intelligence.
+</div>
+
+
+  
+  
+<div>
+  <h3>✋Hands-on</h3> 
+  <p>Let's familiarise ourselves with our beefy CCI workstations!</p>
+  <p>Use whatever is free! There is also a booking system - our Orb system (underused). </p>
+  <p>Instruction <a href="https://moodle.arts.ac.uk/mod/resource/view.php?id=1569012">here</a></p>
+</div>
+
+  <div>
+  <h3>✋Recommended learning resources on multi-modal AI:</h3> 
+  <p><a href="https://www.youtube.com/watch?v=5xF0VkB9k88">this video</a> and<a href="https://www.youtube.com/watch?v=I84eJxjrxWc">this video </a> from MIT media lab</p>
+</div>
+  
+  
+     
+  <div> 
+    Homework:
+   <br />
+    - Start preparing for your <a href="https://moodle.arts.ac.uk/mod/resource/view.php?id=1559297">final project</a>! 
+  <br />
+    - If you plan to work with content we have covered so far, send me a small proposal on what you plan to make and I'll recommend relevant resources!
+  <br />
+    - If you plan to work with content we have not covered so far, send me a message and I'll recommend early readings/preparation for you!
+  </div>
+
+  <h3>🕶️ What we have learnt today</h3>
+  <br />
+  <b>1. Multimodal AI Foundations</b><br />
+  - What modalities are (text, image, audio, video, 3D)<br />
+  - Why multimodality matters for real-world AI<br />
+  - The idea of a shared embedding space<br />
+  - Contrastive learning for cross-modal alignment<br /><br />
+
+  <b>2. Key Models & Architectures</b><br />
+  - CLIP for text-image embedding alignment<br />
+  - BLIP-2 for image-to-language bridging<br />
+  - Modern multimodal LLMs (GPT-4o, Gemini, LLaVA)<br />
+  - Fusion types: early, mid, late fusion<br /><br />
+
+  <b>3. Multimodal Generation</b><br />
+  - Text-to-image diffusion models<br />
+  - Text-to-audio models<br />
+  - Image-to-text (Vision-language) models for reasoning and Q&A<br />
+
+</div>
+
+  
+  <div> 
+    We'll see you next Monday same time and same place!
+  </div>
+  
+</body>
+</html>
