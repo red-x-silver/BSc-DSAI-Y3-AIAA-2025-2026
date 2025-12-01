@@ -116,7 +116,7 @@
       Audio "meow"   → •
       Video clip     → •
 
-  All collapse into nearby vectors → aligned meaning.
+  "Shared": all collapse into nearby vectors that are close to each other in the embedding space, and this indicates aligned meaning.
   </pre>
 </div>
 
@@ -130,52 +130,63 @@
   Modern LMMs typically use mid-level fusion with cross-attention.
 </div>
 
-  <div>
-  <h3>Fusion Architectures (Diagram)</h3>
-  <pre>
-Early Fusion:           Mid Fusion:                 Late Fusion:
- [image+text mixed]     [image]   [text]            [image prediction]
-     │                  │  ▲       │  ▲             │
-  One Transformer       │  │cross  │  │cross        ├── combine
-     │                  ▼  │attn   ▼  │attn         │
-   Output             Joint Embeddings            Final decision
-  </pre>
-</div>
-
-  <div>
-  <h3>Multi-modal with Transformer neural network (Concept)</h3>
-  <pre>
-Tokens:
- [Text Tokens] [Image Tokens] [Audio Tokens] ...
-
-Transformer Layers:
- ┌─────────────────────────────────────────────┐
- │  Self-attention across ALL modalities       │
- │  Cross-modal attention emerges naturally    │
- └─────────────────────────────────────────────┘
-
-Output:
- - Captioning
- - Q&A
- - Retrieval
- - Reasoning
- - Generation
-  </pre>
-</div>
-
-  
-  
-
- <div>
+   <div>
   <h3>Cross-Modal Alignment</h3>
   <br />
-  Models learn matching relationships:
+  Applications:
   <br />
   - Text ↔ Image (captioning, retrieval)<br />
   - Text ↔ Audio (speech & sound recognition)<br />
   - Text ↔ Video (instruction following)<br /><br />
   Technique: contrastive learning (CLIP, ImageBind).
 </div>
+
+  <div>
+  <h3>Contrastive Learning (CL)</h3>
+  Contrastive Learning is the foundation of modern multi-modal AI.
+  <ul>
+    <li>A technique where the model learns by comparing pairs of data.</li>
+    <li>Pulls matching pairs closer (positive pairs).</li>
+    <li>Pushes mismatched pairs apart (negative pairs).</li>
+    <li>Core idea behind multi-modal alignment (e.g., images ↔ text).</li>
+  </ul>
+
+  <br /><b>Key maths behind it:</b>
+  <ul>
+    <li>Similarity measured by dot-product or cosine similarity.</li>
+    <li>Loss function: InfoNCE (Normalized Temperature-scaled Cross Entropy).</li>
+  </ul>
+
+  <br /><b>Used in models:</b>
+  <ul>
+    <li>CLIP (image–text)</li>
+    <li>AudioCLIP (audio–image–text)</li>
+    <li>VideoCLIP (video–text)</li>
+    <li>ImageBind (unified multi-modal alignment)</li>
+  </ul>
+  
+</div>
+
+  
+
+  <div>
+  <h3>Multi-modal with Transformer neural network </h3>
+  <pre>
+Tokens:
+ [Text tokens] [Image tokens] [Audio tokens] ...
+
+Transformer Layers:
+ ┌─────────────────────────────────────────────┐
+ │  Self-attention across ALL modalities       │
+ │  Cross-modal attention emerges naturally    │
+ └─────────────────────────────────────────────┘
+  </pre>
+</div>
+
+  
+  
+
+
 
 <div>
   <h3>Vision-Language Foundations</h3>
