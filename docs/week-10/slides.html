@@ -128,7 +128,7 @@
   <br />
   - Text ↔ Image (captioning, retrieval)<br />
   - Text ↔ Audio (speech & sound recognition)<br />
-  - Text ↔ Video (instruction following)<br /><br />
+  - Text ↔ Video <br /><br />
 
 </div>
 
@@ -151,7 +151,7 @@
   <br /><b>Key maths behind it:</b> 
   <ul>
     <li>Similarity measured by dot-product or cosine similarity.</li>
-    <li>Loss function include NCE, InfoNCE, and more on<a href="https://lilianweng.github.io/posts/2021-05-31-contrastive/">this nice tutorial</a> .</li>
+    <li>Loss function include NCE, InfoNCE, and more on <a href="https://lilianweng.github.io/posts/2021-05-31-contrastive/">this nice tutorial</a> .</li>
   </ul>
 
   <br /><b>Used in models:</b>
@@ -301,7 +301,7 @@ Transformer Layers:
   - Captioning metrics (CIDEr, BLEU)<br />
   - Video QA / temporal benchmarks<br />
   - Performance from real-world tasks: robotics, navigation
-  <p>(essentially the evaluation of the subtasks that multi-modal model can do)</p>
+  <p>(essentially the evaluation of the subtasks that a multi-modal model can do)</p>
 </div>
 
   <div>
@@ -318,17 +318,19 @@ Transformer Layers:
   
   
 <div>
-  <h3>✋Hands-on steps for building a multi-modal seach app: </h3> 
-  <br /> - system input: a collection of images, a piece of text as input query, 
+  <h3>✋Hands-on steps for building a multi-modal search app: </h3> 
+  <br /> - system input: a collection of images (to search from), a piece of text and an image as input query.
   <br /> - Use the pre-trained CLIP embedding model to compute the embedding of every image from the collection (and store them in a database!) 
-  <br /> - Use the pre-trained CLIP embedding model to compute the embedding of the input text
-  <br /> - Compute the cosine similarity between the embeddings of every pair of an image and the input text
+  <br /> - Use the pre-trained CLIP embedding model to compute the embeddings of the input text and image, use some simple operation to merge the two like avegaring.
+  <br /> - Compute the cosine similarity between the embeddings of every pair of an image from the collection and the input.
   <br /> - return the image that has the highest similarity score
 </div>
 
   <div>
   <h3>✋Recommended learning resources on multi-modal AI:</h3> 
-  <p><a href="https://www.youtube.com/watch?v=WkoytlA3MoQ">this simple intro video (not a big fan of the "woman" example in it tho)</a>, <a href="https://encord.com/blog/open-ai-clip-alternatives/">this article </a> on CLIP and its alternatives and  <a href="https://www.youtube.com/playlist?list=PLc0Yh0D0XR4Z3wityRaEuu4rfzTHRIIAO">this MIT course on "How to AI (almost) anything" </a> (lec 4-8 on multi-modal)</p>
+  <p><a href="https://www.youtube.com/watch?v=WkoytlA3MoQ">this simple intro video (not a big fan of the "woman" example in it tho)</a>, 
+   <br /> <a href="https://encord.com/blog/open-ai-clip-alternatives/">this article </a> on CLIP and its alternatives, 
+  <br />  and  <a href="https://www.youtube.com/playlist?list=PLc0Yh0D0XR4Z3wityRaEuu4rfzTHRIIAO">this MIT course on "How to AI (almost) anything" </a> (lec 4-8 on multi-modal)</p>
 </div>
   
   
