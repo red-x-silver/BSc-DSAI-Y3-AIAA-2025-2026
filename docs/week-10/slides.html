@@ -44,7 +44,6 @@
 <div>
   <h3>By the end of this lecture, we will have learned:</h3>
   <br />
-  <b>Theoretical:</b>
   <br /> - What multimodal AI is and what it is for
   <br /> - Core multimodal representations (text, image, audio, video)
   <br /> - How cross-modal alignment works
@@ -65,7 +64,7 @@
   - 3D
   - Sensor data (e.g., depth, heart rate)
   <br /><br />
-  Goal: Build unified models that understand the world more like humans do, which means being able to take in and process information from different modalities.
+  Goal: Build models that understand the world more like humans do, which means being able to take in and process information from different modalities.
 </div>
 
   <div>
@@ -91,16 +90,25 @@
   - Multisensory: physiological, depth, LiDAR
 </div>
 
-<div>
-  <h3>Core idea of multi-modal: shared representation space</h3>
+  <div>
+  <h3>How to fuse the representations? Three approaches!</h3>
   <br />
-  Multi-modal models work by projecting different modalities into one aligned space:
-  <br /><br />
+  <b>Early Fusion</b>: merge raw features<br />
+  <b>Mid Fusion</b>: merge learned embeddings<br />
+  <b>Late Fusion</b>: merge final predictions<br /><br />
+  Modern LMMs typically use mid-level fusion with cross-attention - let's zoom into this!
+</div>
+
+  
+<div>
+  <h3>Shared representation space</h3>
+  <p>The core of multi-modal AI system is usually an embedding model, which can project different modalities into one aligned space:</p
+
+  <br />
   text → embedding<br />
   image → embedding<br />
   audio → embedding<br />
-  video → embedding<br /><br />
-  Then perform representation fusion, alignment, or cross-attention.
+  video → embedding<br />
 </div>
 
   <div>
@@ -111,33 +119,27 @@
       Audio "meow"   → •
       Video clip     → •
 
-  "Shared": all collapse into nearby vectors that are close to each other in the embedding space, and this indicates aligned meaning.
+  "Shared": all collapse into nearby vectors that are close to each other in the embedding space, and this indicates aligned meanings.
   </pre>
 </div>
 
-  
-<div>
-  <h3>How to fuse the representations? Three approaches!</h3>
-  <br />
-  <b>Early Fusion</b>: merge raw features<br />
-  <b>Mid Fusion</b>: merge learned embeddings<br />
-  <b>Late Fusion</b>: merge final predictions<br /><br />
-  Modern LMMs typically use mid-level fusion with cross-attention.
-</div>
-
-   <div>
-  <h3>Cross-Modal Alignment</h3>
-  <br />
-  Applications:
+     <div>
+  <h3>Applications of cross-modal alignment</h3>
   <br />
   - Text ↔ Image (captioning, retrieval)<br />
   - Text ↔ Audio (speech & sound recognition)<br />
   - Text ↔ Video (instruction following)<br /><br />
-  Technique: contrastive learning (CLIP, ImageBind).
+
 </div>
 
+<div>
+  <h3>The technique behind the shared embedding space/cross-modal alignment</h3>
+  <br /><a href="https://en.wikipedia.org/wiki/Contrastive_Language-Image_Pre-training">Contrastive Learning</a>! (used in CLIP, <a href="https://github.com/facebookresearch/ImageBind">ImageBind</a>, etc.)
+</div>
+  
+  
   <div>
-  <h3>Contrastive Learning (CL)</h3>
+  <h3><a href="https://en.wikipedia.org/wiki/Contrastive_Language-Image_Pre-training">Contrastive Learning (CL) </a></h3> 
   Contrastive Learning is the foundation of modern multi-modal AI.
   <ul>
     <li>A technique where the model learns by comparing pairs of data.</li>
@@ -146,56 +148,36 @@
     <li>Core idea behind multi-modal alignment (e.g., images ↔ text).</li>
   </ul>
 
-  <br /><b>Key maths behind it:</b>
+  <br /><b>Key maths behind it:</b> 
   <ul>
     <li>Similarity measured by dot-product or cosine similarity.</li>
-    <li>Loss function: InfoNCE (Normalized Temperature-scaled Cross Entropy).</li>
+    <li>Loss function include NCE, InfoNCE, and more on<a href="https://lilianweng.github.io/posts/2021-05-31-contrastive/">this nice tutorial</a> .</li>
   </ul>
 
   <br /><b>Used in models:</b>
   <ul>
-    <li>CLIP (image–text)</li>
-    <li>AudioCLIP (audio–image–text)</li>
-    <li>VideoCLIP (video–text)</li>
-    <li>ImageBind (unified multi-modal alignment)</li>
+    <li><a href="https://openai.com/index/clip/">CLIP</a> (image–text)</li>
+    <li><a href="https://arxiv.org/abs/2106.13043">AudioCLIP</a> (audio–image–text)</li>  
+    <li><a href="https://www.youtube.com/watch?v=yuE4o2ut2Ck">VideoCLIP</a> (video–text)</li>
+    <li><a href="https://github.com/facebookresearch/ImageBind">ImageBind</a> (unified multi-modal alignment)</li>
   </ul>
   
 </div>
-
-  
-
-  <div>
-  <h3>Multi-modal with Transformer neural network </h3>
-  <pre>
-Tokens:
- [Text tokens] [Image tokens] [Audio tokens] ...
-
-Transformer Layers:
- ┌─────────────────────────────────────────────┐
- │  Self-attention across ALL modalities       │
- │  Cross-modal attention emerges naturally    │
- └─────────────────────────────────────────────┘
-  </pre>
-</div>
-
-  
-  
-
 
 
 <div>
   <h3>Vision-Language Foundations</h3>
   <br />
   Example models:<br />
-  - CLIP<br />
-  - ALIGN<br />
-  - BLIP / BLIP-2<br />
-  - Flamingo<br /><br />
+  - <a href="https://openai.com/index/clip/">CLIP</a><br />  
+  - <a href="https://research.google/blog/align-scaling-up-visual-and-vision-language-representation-learning-with-noisy-text-supervision/">ALIGN</a><br />
+  - <a href="https://github.com/salesforce/BLIP">BLIP</a> / <a href="https://wandb.ai/gladiator/BLIP-2/reports/BLIP-2-A-new-Visual-Language-Model-by-Salesforce--VmlldzozNjM0NjYz">BLIP-2</a><br />   
+  - <a href="https://medium.com/@paluchasz/understanding-flamingo-visual-language-models-bea5eeb05268">Flamingo</a><br /><br />
   Pattern: pretrained vision encoder + pretrained LLM + adapter.
 </div>
 
   <div>
-  <h3>CLIP: Contrastive Learning</h3>
+  <h3><a href="https://openai.com/index/clip/">CLIP</a>: Contrastive Learning</h3>
   <br />
   - Train image encoder + text encoder together<br />
   - Contrastive objective aligns text and image embeddings<br />
@@ -204,7 +186,7 @@ Transformer Layers:
 </div>
   
   <div>
-  <h3>CLIP Intuition (Visual Diagram)</h3>
+  <h3><a href="https://openai.com/index/clip/">CLIP</a> Intuition (Visual Diagram)</h3>
   <pre>
    Text:  "a dog running"      Image:  🐕‍🦺🏃
            │                         │
@@ -221,7 +203,7 @@ Transformer Layers:
   
 
   <div>
-  <h3>BLIP-2: Bootstrapping Language-Image Pretraining</h3>
+  <h3><a href="https://wandb.ai/gladiator/BLIP-2/reports/BLIP-2-A-new-Visual-Language-Model-by-Salesforce--VmlldzozNjM0NjYz">BLIP-2</a>: Bootstrapping Language-Image Pretraining</h3>
   <br />
   - Frozen Vision Transformer encoder<br />
   - Frozen LLM (e.g., OPT, FlanT5)<br />
@@ -232,10 +214,10 @@ Transformer Layers:
   <div>
   <h3>Modern Multimodal LLMs</h3>
   <br />
-  - GPT-4o<br />
-  - Google Gemini<br />
-  - LLaVA<br />
-  - Qwen-VL<br /><br />
+  - <a href="https://openai.com/index/hello-gpt-4o/">GPT-4o</a><br />  
+  - <a href="https://gemini.google.com/">Google Gemini</a><br />  
+  - <a href="https://llava-vl.github.io/">LLaVA</a><br />  
+  - <a href="https://github.com/QwenLM/Qwen3-VL">Qwen-VL</a><br /><br />  
   Characteristics: unified encoder-decoder + cross-attention.
 </div>
 
@@ -252,25 +234,24 @@ Transformer Layers:
   <div>
   <h3>Multi-modal generation: Text-to-Audio Models</h3>
   <br />
-  - Whisper: speech-to-text<br />
-  - AudioLM / Bark: text-to-speech<br />
-  - ImageBind: image ↔ audio ↔ video ↔ IMU<br /><br />
+  - Whisper: speech-to-text (check our lecture 04!)<br />  
+  - <a href="https://huggingface.co/docs/diffusers/en/api/pipelines/audioldm">AudioLM</a> / <a href="https://github.com/suno-ai/bark">Bark</a>: text-to-speech<br />   
+  - <a href="https://github.com/facebookresearch/ImageBind">ImageBind</a>: image ↔ audio ↔ video ↔ IMU<br /><br />  
   Objective: unify audio with other modalities in shared space.
 </div>
 
   <div>
   <h3>Multi-modal generation: Image-to-Text Model</h3>
   <br />
-  - VideoCLIP<br />
-  - LiT<br />
-  - PaLI<br />
-  - Flamingo<br /><br />
-  Techniques: frame-level encoders, temporal transformers.
+  - <a href="https://www.youtube.com/watch?v=yuE4o2ut2Ck">VideoCLIP</a><br />  
+  - <a href="https://research.google/blog/locked-image-tuning-adding-language-understanding-to-image-models/">LiT</a><br />
+  - <a href="https://sites.research.google/pali/">PaLI</a><br />
+  - <a href="https://medium.com/@paluchasz/understanding-flamingo-visual-language-models-bea5eeb05268">Flamingo</a><br /><br />
 </div>
 
 
   <div>
-  <h3>Case study: OpenAI Sora</h3>
+  <h3>Case study: <a href="https://openai.com/index/video-generation-models-as-world-simulators/">OpenAI Sora</a></h3>    
   <br />
   - Text → Video generative model<br />
   - Video synthesis + physics-aware consistency<br />
@@ -287,6 +268,20 @@ Transformer Layers:
   - Tokenizer for image, audio, video<br /><br />
   Enables unified transformer architecture.
 </div>
+  
+    <div>
+  <h3>Multi-modal with Transformer neural network </h3>
+  <pre>
+Tokens:
+ [Text tokens] [Image tokens] [Audio tokens] ...
+
+Transformer Layers:
+ ┌─────────────────────────────────────────────┐
+ │  Self-attention across ALL modalities       │
+ │  Cross-modal attention emerges naturally    │
+ └─────────────────────────────────────────────┘
+  </pre>
+</div>
 
   <div>
   <h3>Multimodal Reasoning Capabilities</h3>
@@ -297,24 +292,7 @@ Transformer Layers:
   - Multi-step reasoning with visual grounding
 </div>
 
-  <div>
-  <h3>Instruction Tuning for Multimodality</h3>
-  <br />
-  - Combine vision-language pairs + instructions<br />
-  - Goals: improve alignment, reduce hallucinations<br /><br />
-  Example datasets: LLaVA-Instruct, VQAv2, TextCaps.
-</div>
-
-  <div>
-  <h3>Challenges in Multi-modal AI</h3>
-  <br />
-  - Temporal modeling in video<br />
-  - Tokenization cost for high-res data<br />
-  - Cross-modal alignment errors<br />
-  - Hallucinations & miscalibrated confidence<br />
-  - Dataset biases across modalities
-</div>
-
+ 
   <div>
   <h3>Evaluation of Multi-Modal Models</h3>
   <br />
@@ -322,17 +300,18 @@ Transformer Layers:
   - VQA (visual question answering)<br />
   - Captioning metrics (CIDEr, BLEU)<br />
   - Video QA / temporal benchmarks<br />
-  - Real-world tasks: robotics, navigation
+  - Performance from real-world tasks: robotics, navigation
+  <p>(essentially the evaluation of the subtasks that multi-modal model can do)</p>
 </div>
 
   <div>
-  <h3>The Future of Multi-Modal AI</h3>
+  <h3>Future of Multi-Modal AI (maybe)</h3>
   <br />
-  - Unified world models<br />
+  - Unified <a href="https://www.nvidia.com/en-gb/glossary/world-models/">world models</a><br />  
   - Integration of 3D + physics + video<br />
   - Agents that perceive, act, and reason<br />
-  - Long-horizon multimodal memory<br /><br />
-  A step toward general-purpose embodied intelligence.
+  - <a href="https://github.com/JiuTian-VL/Optimus-1">Long-horizon multimodal memory</a><br /><br />  
+  Toward general-purpose "embodied" intelligence.
 </div>
 
 
@@ -349,7 +328,7 @@ Transformer Layers:
 
   <div>
   <h3>✋Recommended learning resources on multi-modal AI:</h3> 
-  <p><a href="https://www.youtube.com/watch?v=WkoytlA3MoQ">this simple intro video</a>, <a href="https://encord.com/blog/open-ai-clip-alternatives/">this article </a> on CLIP and its alternatives and  <a href="https://www.youtube.com/playlist?list=PLc0Yh0D0XR4Z3wityRaEuu4rfzTHRIIAO">this MIT course on "How to AI (almost) anything" </a> (lec 4-8 on multi-modal)</p>
+  <p><a href="https://www.youtube.com/watch?v=WkoytlA3MoQ">this simple intro video (not a big fan of the "woman" example in it tho)</a>, <a href="https://encord.com/blog/open-ai-clip-alternatives/">this article </a> on CLIP and its alternatives and  <a href="https://www.youtube.com/playlist?list=PLc0Yh0D0XR4Z3wityRaEuu4rfzTHRIIAO">this MIT course on "How to AI (almost) anything" </a> (lec 4-8 on multi-modal)</p>
 </div>
   
   
