@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <title>Artificial Intelligence and Advanced Analytics 10</title>
+  <!-- This whole presentation was made with Big: https://github.com/tmcw/big -->
+  
+  <link href="../big/big.css" rel="stylesheet" type="text/css" />
+  <script src="../big/big.js"></script>
+  <link href="../big/themes/lightWhite.css" rel="stylesheet" type="text/css" />
+
+  <!-- Favicon link below, via https://emojitofavicon.com -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%2210 0 100 100%22><text y=%22.90em%22 font-size=%2290%22>🍴</text></svg>"></link>
+  
+  <style>
+    body {
+      background-color: #EDDD6E;
+      font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, Ubuntu, roboto, noto, segoe ui, arial, sans-serif;
+      /* font-weight: 700;*/
+      margin: 0;
+      padding: 0;
+      font-style: normal;
+      font-size: 21px;
+    }
+  </style>
+  
+</head>
+<body>
+  <div>
+    AIAA👐
+    <br />
+    Lecture 11
+    <br />
+    Explainable AI
+  </div>
+    
+  <div>Welcome 👩‍🎤🧑‍🎤👨‍🎤</div>
+  
+
+  
+  <div> First of all, don't forget to confirm your attendence on <a href="https://www.arts.ac.uk/study-at-ual/course-regulations/attendance-policy/attendance-monitoring"> SEAtS App!  </a></div>
+
+<div>
+  <h3>By the end of this lecture, we will have learned:</h3>
+  <br />
+  <br /> - What explainable AI is and what it is for
+  <br /> - Explainable AI techniques for different models
+
+</div>
+
+  <div>
+  <h2>Explainable AI (XAI)</h2>
+  <br />
+  Understanding how AI models make decisions.
+</div>
+
+    <div>
+  <h3>✋Recommended learning resources on explainable AI:</h3> 
+  <p><a href="https://christophm.github.io/interpretable-ml-book/">Interpretable Machine Learning</a> (a v good book!), 
+   <br /> <a href=""> </a> , 
+  <br />and <a href=""></a> </p>
+</div>
+  
+
+  <div>
+  <h3>Why Explainable AI?</h3>
+
+  <ul>
+    <li>Modern AI models are often "black boxes".</li>
+    <li>Users need to understand and trust AI decisions.</li>
+    <li>Especially required in high-stakes settings: health, finance, law, hiring.</li>
+    <li>Necessary for debugging, fairness, and safety.</li>
+    <li>Regulatory pressure from <a href="https://gdpr.eu/what-is-gdpr/">GDPR</a>, <a href="https://en.wikipedia.org/wiki/Artificial_Intelligence_Act">EU AI Act</a>, etc. </li>   
+  </ul>
+</div>
+
+<div>
+  <h3>What is Explainable AI?</h3>
+  <ul>
+    <li>Techniques that make model behaviour understandable to humans.</li>
+    <li>“Why did the model do that?”</li>
+  </ul>
+</div>
+
+<div>
+  <h3>Types of Explainability</h3>
+
+  <b>Global Explanations</b>
+  <ul>
+    <li>How the model behaves overall.</li>
+    <li>Feature importance, partial dependence.</li>
+  </ul>
+
+  <b>Local Explanations</b>
+  <ul>
+    <li>Why the model made a *specific* prediction.</li> 
+    <li><a href="https://christophm.github.io/interpretable-ml-book/lime.html">LIME</a>, <a href="https://christophm.github.io/interpretable-ml-book/shap.html">SHAP</a>, <a href="https://christophm.github.io/interpretable-ml-book/counterfactual.html">counterfactuals.</a></li>  
+  </ul>
+</div>
+
+<div>
+  <h3>Intrinsic vs Post-Hoc Explainability</h3>
+  <ul>  
+    <li><b>Intrinsic:</b> model is interpretable by design (<a href="https://christophm.github.io/interpretable-ml-book/limo.html">linear models</a>, <a href="https://christophm.github.io/interpretable-ml-book/tree.html">trees</a>).</li>
+    <li><b>Post-hoc:</b> explanation added after training (deep neural networks, ensemble of models).</li>
+    <li>Most modern deep learning, which produces deep neural nets, relies on post-hoc XAI.</li>
+  </ul>
+</div>
+
+<div>
+  <h3><a href="https://christophm.github.io/interpretable-ml-book/feature-importance.html">Feature Importance</a></h3>    
+
+  <ul>
+    <li>Ranks features by contribution to the model’s predictions.</li>
+    <li>Works well for tree-based models.</li>
+    <li>Gives a global view of model behaviour.</li>
+  </ul>
+</div>
+
+  <div>
+  <h3><a href="https://christophm.github.io/interpretable-ml-book/pdp.html">Partial Dependence Plots (PDP)</a></h3>
+
+  <ul>
+    <li>Show how a feature influences predictions on average.</li>
+    <li>Useful for nonlinear models.</li>
+    <li>Helps identify thresholds & interactions.</li>
+  </ul>
+</div>
+
+  <div>
+  <h3><a href="https://christophm.github.io/interpretable-ml-book/lime.html">LIME</a>: Local Interpretable Model-Agnostic Explanations</h3>
+
+  <ul>
+    <li>Explains individual predictions.</li>
+    <li>Perturbs inputs and learns a simple local model.</li>
+    <li>Works with any black-box model.</li>
+    <li>Often used for tabular, text, and image explanations.</li>
+  </ul>
+</div>
+
+  <div>
+  <h3><a href="https://christophm.github.io/interpretable-ml-book/shap.html">SHAP</a>: Shapley Additive Values</h3>
+
+  <ul>
+    <li>Uses cooperative game theory.</li>
+    <li>Fairly attributes prediction to each feature.</li>
+    <li>Consistent, theoretically grounded.</li>
+    <li>Gold standard for tabular model explanations.</li>
+  </ul>
+</div>
+
+<div>  
+  <h3><a href="https://christophm.github.io/interpretable-ml-book/pixel-attribution.html">Saliency Maps</a> for Vision Models</h3>
+
+  <ul>
+    <li>Highlight which pixels influence the prediction.</li>
+    <li>Use gradients to detect sensitivity.</li>
+    <li>Good for CNNs and Vision Transformers.</li>
+    <li>Sometimes noisy; not always faithful.</li>
+  </ul>
+</div>
+
+  <div>
+  <h3><a href="https://github.com/jacobgil/pytorch-grad-cam">Grad-CAM</a></h3>  
+
+  <ul>
+    <li>Class activation maps for CNNs.</li>
+    <li>Shows which regions “activated” the model’s decision.</li>
+    <li>Human-friendly heatmaps.</li>
+  </ul>
+</div>
+
+<div>
+  <h3>Explainability in Large Language Models</h3>
+
+  <ul>
+    <li>Attention head visualization.</li>
+    <li>Mechanistic interpretability.</li>
+    <li>Neuron probing and activation patching.</li>
+    <li>Challenge: reasoning is distributed across many components.</li>
+  </ul>
+</div>
+
+  <div>
+  <h3>Human-Centered XAI</h3>
+
+  <ul>
+    <li>Explanations must be understandable to real users.</li>
+    <li>Balance “faithfulness” vs “simplicity”.</li>
+    <li>Too much detail = cognitive overload.</li>
+    <li>Different users need different explanations.</li>
+  </ul>
+</div>
+
+  <div>
+  <h3>Hands-on Lab: LIME & SHAP</h3>
+
+  <ul>
+    <li>Train a classifier on tabular data.</li>
+    <li>Use LIME to explain individual predictions.</li>
+    <li>Use SHAP to understand global & local feature importance.</li>
+    <li>Optional: <a href="https://github.com/jacobgil/pytorch-grad-cam">Grad-CAM</a> on an image classifier.</li>
+  </ul>
+</div>
+
+  <div>
+  <h3>What We Learned Today</h3>
+
+  <ul>
+    <li>Why Explainable AI is necessary.</li>
+    <li>Global vs local, intrinsic vs post-hoc explainability.</li>
+    <li>Key methods: LIME, SHAP, PDP, Saliency Maps, Grad-CAM.</li>
+    <li>Explainability for LLMs.</li>
+    <li>Human-centered design for explanations.</li>
+  </ul>
+</div>
+
+
+  
+
+
