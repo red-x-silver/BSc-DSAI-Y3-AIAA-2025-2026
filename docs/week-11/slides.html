@@ -155,7 +155,7 @@
     <li>Uses cooperative game theory.</li>
     <li>Fairly attributes prediction to each feature.</li>
     <li>Consistent, theoretically grounded.</li>
-    <li>Gold standard for tabular model explanations.</li>
+    <li>Good for tabular model explanations.</li>
   </ul>
 </div>
 
@@ -184,6 +184,7 @@
   <h3>Explainability in Large Language Models</h3>
 
   <ul>
+    <li>LLM adopts transformer architecture which features attention blocks.</li>
     <li>Attention head visualization.</li>
     <li>Mechanistic interpretability.</li>
     <li>Neuron probing and activation patching.</li>
@@ -205,13 +206,34 @@
   <div>
   <h3>Hands-on Lab: LIME & SHAP</h3>
 
-  <ul>
+  <ul>  
     <li>Train a classifier on tabular data.</li>
     <li>Use LIME to explain individual predictions.</li>
     <li>Use SHAP to understand global & local feature importance.</li>
-    <li>Optional: <a href="https://github.com/jacobgil/pytorch-grad-cam">Grad-CAM</a> on an image classifier.</li>
+    <li>Use <a href="https://github.com/jacobgil/pytorch-grad-cam">Grad-CAM</a> on an image classifier.</li>
   </ul>
 </div>
+
+    <div>
+  <h3>Prepare environment (in VSCode terminal)</h3>
+  <p>Download and open <a href="https://github.com/jacobgil/pytorch-grad-cam">this folder with a Python notebook</a> in VScode.</p>
+  <ul>  
+    <li>conda create -n xai python=3.9</li>
+    <li>conda activate xai</li>
+    <li>pip install numpy pandas scikit-learn lime shap matplotlib seaborn</li>
+    <li>pip install torch torchvision torchaudio</li>
+    <li>pip install transformers pillow</li>
+    
+  </ul>
+   
+</div>
+
+    <div>
+  <h3>Hands-on Lab: LIME & SHAP</h3>
+   <p>Your turn: read the python notebook (especially how to interpret each plot) and run the cells! </p>
+</div>
+  
+   
 
   <div>
   <h3>What We Learned Today</h3>
